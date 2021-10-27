@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>MemeGenerator</title>
+</head>
+
+<body onload="onInit()">
+    <header class="navbar flex space-between">
+        <div class="logo">
+            <h1 class="heading">Memegenerator</h1>
+            <h4 class="sub-heading">Your Meme Stock</h4>
+        </div>
+        <nav class="navbar topnav flex">
+            <ul class="main-nav flex clean-list flex space-between align-center">
+                <li><a href="index.html">Galery</a></li>
+                <li><a href="memes.html">Memes</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dropdown">Language<span class="fa fa-angle-double-down"></span>
+                    <ul class="dropbtn dropdown-content clean-list ">
+                        <li><a onclick="onSetLang('EN')">English</a></li>
+                        <li><a onclick="onSetLang('HE')">Hebrew</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="btn-menu fa fa-bars" onclick="toggleMenu()"></button>
+        </nav>
+    </header>
+
+
+    <section class="search-sec main-layout">
+        <div class="search-box">
+            <input class="input-bar" type="text" list="theme-search" placeholder="Search a category...."
+                onkeyup="onFilterMemes(value)">
+            <span class="fa fa-search"></span>
+            <datalist id="theme-search">
+                <option value="Funny">
+                <option value="Animal">
+                <option value="Bad">
+                <option value="Awkward">
+                <option value="Happy">
+            </datalist>
+        </div>
+        <div class="search-words">
+            <!-- Here are rendered The search Words -->
+        </div>
+    </section>
+
+
+    <section class="img-container main-layout">
+        <!-- Here will be rendered the images  -->
+    </section> -->
+
+
+
+    <section class="editor-container main-layout">
+        <div class="canvas-container hidden">
+            <canvas id="meme-canvas" height="450" width="450">
+            </canvas>
+        </div>
+        <div class="canvas-editors hidden">
+            <div class="editors main-layout">
+                <input class="userTxt" type="text" id="text" placeholder="Go wild!" oninput="onsendInput(value)">
+                <div class="btn-gr1">
+                    <button value="UP" onclick="onMoveFocus(value)" class="fa fa-arrow-up"></button>
+                    <button value="DOWN" onclick="onMoveFocus(value)" class="fa fa-arrow-down"></button>
+                    <button onclick="onCenterText()" class="fa fa-exchange"></button>
+                    <button onclick="onAddText()" class="fa fa-plus"></button>
+                    <button onclick="onRemoveText()" class="fa fa-trash"></button>
+                </div>
+                <div class="btn-gr2">
+                    <button value="PLUS" onclick="onChangeTextSize(value)" class="fa fa-font"><span>+</span></button>
+                    <button value="MINUS" onclick="onChangeTextSize(value)" class="fa fa-font"><span>-</span></button>
+                    <button value="CENTER" onclick="onAlignText(value)" class="fa fa-align-center"></button>
+                    <button value="LEFT" onclick="onAlignText(value)" class="fa fa-align-left"></button>
+                    <button value="RIGHT" onclick="onAlignText(value)" class="fa fa-align-right"></button>
+                    <select id="fonts" class="fonts-selection" onkeyup="onChangeFont(value)">
+                        <option value="">Ariel</option>
+                        <option value="">Saab</option>
+                        <option value="">Opel</option>
+                        <option value="">Audi</option>
+                    </select>
+                    <button onclick="onCenterText()" class="fa fa-strikethrough"></button>
+                    <button onclick="onCenterText()" class="fa palette">🎨</button>
+                </div>
+                <div class="stikers-container">
+
+                </div>
+                <div class="save-btns">
+                    <button class="fc-btn">Share to<sapn class="fa fa-facebook"></sapn></button>
+                    <button class="dw-btn">Download to your computer<span class="fa fa-download"></span></button>
+                    <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+                    <button class="save-btn">Save<span class="fa fa-save"></span> </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <h4 class="logo">MemeGenerator</h4>
+        <p>Presented By <a href="contact.html">Sundos Guty</a></p>
+        <p>&copy; Copyright 2021, All Right Reserved</p>
+    </footer>
+
+
+    <script src="js/utilitis.js"></script>
+    <script src="js/exp-inp.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controler.js"></script>
+
+
+</body>
+
+</html>
