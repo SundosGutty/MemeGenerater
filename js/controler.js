@@ -11,6 +11,7 @@ function onInit() {
     renderCanvas()
     gCanvas.width = 450
     gCanvas.height = 450
+    // shareToExternalSorce()
 }
 
 
@@ -32,6 +33,18 @@ function onCreateMeme(imgId) {
     var currImgId = getCurrImgId()
     onDisplayMeme(currImgId)
     renderCanvas()
+    
+}
+
+
+function onAddLine() {
+    setLine()
+    onDisplayMeme()
+}
+
+
+function onChangeStokeColor() {
+
 }
 
 
@@ -46,18 +59,26 @@ function renderImg(img) {
 }
 
 function onDisplayMeme(imgId) {
-    console.log(imgId)
+    var meme = getMeme()
+    var idx = returnIdx()
+    var txt = meme.lines[idx].txt
     var meme = new Image()
     meme.src = onGetMemeUrl(imgId)
     meme.onload = function () {
         gCtx.drawImage(meme, 0, 0, gCanvas.width, gCanvas.height)
-        onAddInputTxt()
+        drawText(txt, 10, 50)
     }
 }
 
 
-function onsendInput(txt) {
-    drawText(txt, 30, 50)
+function onsendInput(elTxt) {
+    var meme = getMeme()
+    var idx = returnIdx()
+    meme.lines[idx].txt = elTxt.value
+    console.log(elTxt.value)
+
+    drawText(elTxt.value, 30, 50)
+    onDisplayMeme()
 }
 
 
@@ -71,12 +92,24 @@ function drawText(text, x, y) {
 
 }
 
+// function onChangeStokeColor(color) {
+//     setStroke(color)
+//     onDisplayMeme()
+// }
+
+// function onChangeTextColor(color){
+//   setTxtColor(color)
+//   onDisplayMeme()
+// }
+
 function onGetMemeUrl(id) {
     return getImgById(id).url
 }
 
 
-
+function onClearCanvas() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+}
 
 
 function setPage() {
@@ -127,4 +160,9 @@ function OnGetEmailLink() {
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
+}
+
+
+function onDisplayInputFile(){
+    document.querySelector('.file-input').style.display = 'block'
 }

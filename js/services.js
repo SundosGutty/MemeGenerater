@@ -1,6 +1,8 @@
 'use strict'
 
 var gMemes = []
+var gIdx = 0
+
 var gImages = [
     {
         id: 1,
@@ -97,15 +99,53 @@ var gImages = [
 
 var gMeme = {
     selectedImgId: 1,
-    selectedLineIdx: 0,
+    selectedLineIdx: gIdx,
     lines: [
         {
-            txt: 'I never eat Falafel',
-            size: 20,
+            txt: 'Be creative!',
+            font: '',
+            size: 10,
             align: 'left',
-            color: 'red'
+            color: 'red',
+            strColor: ''
+            // positionX: 40px, 
+            // positionY:
+
+
+        },
+        {
+            txt: 'Try more!',
+            size: 10,
+            align: 'left',
+            color: 'red',
+            strColor: ''
         }
     ]
+
+}
+
+
+function setStroke(val) {
+    console.log(val)
+    var lineIdx = gMeme.selectedLineIdx
+    gMemes[lineIdx].color = val
+}
+
+
+function setTxtColor(val) {
+    var lineIdx = gMeme.selectedLineIdx
+    gMemes[lineIdx].color = val
+}
+
+
+function returnIdx() {
+    return gIdx
+}
+
+
+function setLine() {
+    gIdx++
+    console.log(gIdx)
 }
 
 
@@ -132,3 +172,5 @@ function getMeme() {
 function getImgs() {
     return gImages
 }
+
+

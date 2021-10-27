@@ -211,6 +211,15 @@ a:is(:link, :active, :visited).active {
   height: 50px;
 }
 
+
+.file-input{
+  background-color: white;
+  border: 1px solid;
+  box-shadow: 5px 5px 16px 0px #948e8e;
+  cursor: pointer;
+  display: none;
+}
+
 .editor-container button {
   background-color: white;
   border: 1px solid;
@@ -234,7 +243,13 @@ a:is(:link, :active, :visited).active {
 } 
 
 .userTxt {
-  grid-column: 1/6;
+  grid-column: 1/5;
+  grid-row: 1/2;
+}
+
+
+.fa-upload{
+  grid-column: 5/6;
   grid-row: 1/2;
 }
 
@@ -303,6 +318,27 @@ a:is(:link, :active, :visited).active {
 }
 
 
+.share-container a{
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+.a-btn{
+  text-decoration: none;
+  width: 140px;
+  height: 50px;
+  padding: 5px; 
+  cursor: pointer;
+  border: black 1px solid;
+  color: black;
+  box-shadow: 5px 5px 16px 0px #948e8e;
+  text-align: center;
+  padding-top: 15px;
+
+}
+
+
 
 
 /* footer */
@@ -352,3 +388,6 @@ p a {
 .topnav .icon {
   display: none;
 }
+
+
+
