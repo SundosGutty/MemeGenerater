@@ -100,7 +100,24 @@ a:is(:link, :active, :visited).active {
   display: none;
 }
 
+ /* @media (max-width: 920px) {
+  .editor-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .canvas-editors {
+    align-items: center;
+    /* padding-right: 45px; */
+    /* width: 350px;
+    height: 350px; */
+  /* }
+}   */
+
 @media (max-width: 650px) {
+  /* body {
+    overflow-x: hidden;
+  } */
   .main-nav {
     position: fixed;
     top: 75px;
@@ -124,6 +141,7 @@ a:is(:link, :active, :visited).active {
   .btn-menu {
     display: block;
   }
+
 }
 
 /* Search-area */
@@ -339,15 +357,12 @@ p a {
 
 /* contact-html */
 
-.by-socials .fa{
+.by-socials .fa {
   display: flex;
   align-items: center;
   width: 50px;
   height: 50px;
-  
 }
-
-
 
 /* HELPERS */
 

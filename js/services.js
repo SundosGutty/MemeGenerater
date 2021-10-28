@@ -134,15 +134,15 @@ var gMeme = {
             positionX: gCanvas.width / 2,
             positionY: 30,
         },
-        {
-            txt: 'Try more!',
-            size: 30,
-            align: 'left',
-            innerColor: 'red',
-            strColor: 'blue',
-            positionX: 350,
-            positionY: 350,
-        }
+        // {
+        //     txt: 'Try more!',
+        //     size: 30,
+        //     align: 'left',
+        //     innerColor: 'red',
+        //     strColor: 'blue',
+        //     positionX: 350,
+        //     positionY: 350,
+        // }
     ]
 
 }
