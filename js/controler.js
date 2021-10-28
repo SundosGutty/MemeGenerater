@@ -4,9 +4,10 @@ var gImg;
 var gCurrtMeme;
 const gCanvas = document.querySelector('#meme-canvas')
 const gCtx = gCanvas.getContext('2d')
-var gFont = 'IMPACT'
+var gFont = 'Impact'
 gCanvas.width = 450
 gCanvas.height = 450
+var gIsSaveProcess = false
 
 
 
@@ -42,6 +43,10 @@ function onChangeStokeColor(color) {
     renderCanvas()
 }
 
+function onChangeFont(value) {
+    changeFont(value)
+    renderCanvas()
+}
 
 function onChangeTextSize(num) {
     changeSize(num)
@@ -67,19 +72,12 @@ function onAlignText(pos) {
 }
 
 
-function onChangeFont(value) {
-
-}
-
-function renderCanvas() {
-    onDisplayMeme()
-}
 
 function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-function onDisplayMeme() {
+function renderCanvas() {
     var meme = new Image()
     meme.src = getMemeUrl()
     meme.onload = function () {
@@ -88,9 +86,6 @@ function onDisplayMeme() {
     }
 }
 
-function onChangeFont(value) {
-
-}
 
 function onsendInput(elTxt) {
     var meme = getMeme()
@@ -113,18 +108,26 @@ function drawText() {
 
     var positionX = currLine.positionX
     var positionY = currLine.positionY
-
-    gCtx.beginPath()
-    gCtx.rect(10, positionY - currLine.size, gCanvas.width - 50, currLine.size + 10)
-    gCtx.strokeStyle = 'black'
-    gCtx.stroke()
-
+    if (!gIsSaveProcess) {
+        if (gMeme.selectedLineIdx === idx) {
+            var heightText = currLine.size
+            var y = positionY
+            gCtx.beginPath()
+            gCtx.rect(10, y - heightText, gCanvas.width - 20, heightText + 10)
+            gCtx.strokeStyle = 'black'
+            gCtx.stroke()
+        }
+    }
     gCtx.fillText(currLine.txt, positionX, positionY)
     gCtx.restore()
     gCtx.strokeText(currLine.txt, positionX, positionY)
+  
 }
 
-
+function onAddLine() {
+    addLine()
+    renderCanvas()
+}
 
 function onRemoveText() {
     removeLine()
@@ -132,10 +135,11 @@ function onRemoveText() {
 
 }
 
-
-function onClearCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-}
+document.querySelector('#text').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      
+    }
+})
 
 
 function setPage() {
@@ -161,16 +165,6 @@ function onSetLang(lang) {
     if (lang === 'HE') console.log('he')
     if (lang === 'EN') console.log('en')
 }
-
-
-//to Do update e-mail
-function OnGetEmailLink() {
-    var userEmailInput = document.querySelector('[name="user-email"]').value
-    var userSubInput = document.querySelector('[name="user-subject"]').value
-    var userMsgInput = document.querySelector('[name="massage"]').value
-    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${userEmailInput}.com&su=${userSubInput}&body=${userMsgInput}`)
-}
-
 
 
 

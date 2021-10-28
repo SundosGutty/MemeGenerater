@@ -2,9 +2,27 @@
 
 var gMemes = []
 var gIdx = 0
-var gWords = {
-
+var gKeywords = {
+    'happy': 12,
+    'funny': 1,
+    'celebrity': 7,
+    'politic': 2,
+    'cute': 12,
+    'animal': 1,
+    'books': 0,
+    'comics': 6,
+    'cartoon': 0,
+    'baby': 1,
+    'love': 7,
+    'sport': 2,
+    'kid': 12,
+    'dog': 2,
+    'cat': 2,
+    'drinks': 0,
+    'movie': 4,
+    'tv': 7,
 }
+
 
 var gImages = [
     {
@@ -116,19 +134,39 @@ var gMeme = {
             positionX: gCanvas.width / 2,
             positionY: 30,
         },
-        // {
-        //     txt: 'Try more!',
-        //     size: 30,
-        //     align: 'left',
-        //     color: 'red',
-        //     strColor: 'blue',
-        //     positionX: 350, 
-        //     positionY:  350,
-        // }
+        {
+            txt: 'Try more!',
+            size: 30,
+            align: 'left',
+            color: 'red',
+            strColor: 'blue',
+            positionX: 350,
+            positionY: 350,
+        }
     ]
 
 }
 
+
+function addLine() {
+    var line = {
+        txt: 'Add new text here',
+        font: 'impact',
+        size: 40,
+        align: 'center',
+        OutlineColor: 'black',
+        fillColor: 'white',
+        positionX: 225,
+        positionY: 225
+    }
+    gMeme.lines.push(line)
+    gMeme.selectedLineIdx++
+}
+
+
+function changeFont(font) {
+    gFont = font
+}
 
 function getLineIdx() {
     return gMeme.selectedLineIdx
@@ -149,7 +187,7 @@ function changeSize(num) {
 
 
 function alignText(aligPs) {
-    // if (gMeme.lines.length === 0) return
+    if (gMeme.lines.length === 0) return
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].align = aligPs
 
@@ -189,7 +227,6 @@ function setLine() {
 
 function getMemeUrl() {
     var idx = getImgId()
-    console.log(idx)
     return gImages[idx].url
 }
 
@@ -206,7 +243,8 @@ function getCurrImgId() {
 
 
 function getSelectedImg(id) {
-    gMeme.selectedImgId += id
+    console.log(id)
+    gMeme.selectedImgId = id
 }
 
 function getMeme() {
