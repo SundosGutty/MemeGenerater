@@ -2,9 +2,12 @@
 
 var gImg;
 var gCurrtMeme;
-var gCanvas;
-var gCtx;
+const gCanvas = document.querySelector('#meme-canvas')
+const gCtx = gCanvas.getContext('2d')
 var gFont = 'IMPACT'
+gCanvas.width = 450
+gCanvas.height = 450
+
 
 
 function onInit() {
@@ -12,6 +15,7 @@ function onInit() {
     renderCanvas()
     gCanvas.width = 450
     gCanvas.height = 450
+
 }
 
 
@@ -27,23 +31,21 @@ function renderGallery() {
 
 
 function onCreateMeme(imgId) {
-    setPage()
     getSelectedImg(imgId)
-    var currImgId = getCurrImgId()
-    onDisplayMeme(currImgId)
     renderCanvas()
-
+    setPage()
 }
+
 
 function onChangeStokeColor(color) {
     editMeme('strColor', color)
-    onDisplayMeme()
+    renderCanvas()
 }
 
 
 function onChangeTextSize(num) {
     changeSize(num)
-    onDisplayMeme()
+    renderCanvas()
 
 }
 
@@ -56,17 +58,20 @@ function editMeme(key, value) {
 
 function onChangeTextColor(color) {
     editMeme('innerColor', color)
-    onDisplayMeme()
+    renderCanvas()
 }
 
 function onAlignText(pos) {
     alignText(pos)
+    renderCanvas()
+}
+
+
+function onChangeFont(value) {
+
 }
 
 function renderCanvas() {
-    gCanvas = document.querySelector('#meme-canvas')
-    gCtx = gCanvas.getContext('2d')
-    // renderImg()
     onDisplayMeme()
 }
 
@@ -74,48 +79,51 @@ function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-function onDisplayMeme(imgId) {
+function onDisplayMeme() {
     var meme = new Image()
-    meme.src = onGetMemeUrl(imgId)
+    meme.src = getMemeUrl()
     meme.onload = function () {
         gCtx.drawImage(meme, 0, 0, gCanvas.width, gCanvas.height)
         drawText()
     }
 }
 
+function onChangeFont(value) {
+
+}
 
 function onsendInput(elTxt) {
     var meme = getMeme()
     var idx = returnIdx()
     meme.lines[idx].txt = elTxt.value
-
-    drawText(elTxt.value, 30, 50)
-    onDisplayMeme()
+    renderCanvas()
 }
 
 
 function drawText() {
-    for (var i = 0; i < gMeme.lines.length; i++) {
-        var textFromMeme = getMemeText(i)
-        gCtx.lineWidth = 2
-        gCtx.strokeStyle = gMeme.lines[i].strColor
-        gCtx.fillStyle = gMeme.lines[i].innerColor
-        gCtx.font = `${gMeme.lines[i].size}px ${gFont}`;
-        gCtx.textAlign = gMeme.lines[i].align
-        var positionX = gMeme.lines[i].positionX
-        var positionY = gMeme.lines[i].positionY
-    }
-    gCtx.fillText(textFromMeme, positionX, positionY)
-    gCtx.strokeText(textFromMeme, positionX, positionY)
+    var meme = getMeme()
+    var idx = getLineIdx()
+    var currLine = meme.lines[idx]
+    gCtx.lineWidth = 2
+    gCtx.fillStyle = currLine.innerColor
+    gCtx.font = `${currLine.size}px ${gFont}`
+    gCtx.textAlign = currLine.align
+    gCtx.strokeStyle = currLine.strColor
+    gCtx.save()
+
+    var positionX = currLine.positionX
+    var positionY = currLine.positionY
+
+    gCtx.beginPath()
+    gCtx.rect(10, positionY - currLine.size, gCanvas.width - 50, currLine.size + 10)
+    gCtx.strokeStyle = 'black'
+    gCtx.stroke()
+
+    gCtx.fillText(currLine.txt, positionX, positionY)
+    gCtx.restore()
+    gCtx.strokeText(currLine.txt, positionX, positionY)
 }
 
-
-
-
-
-function onGetMemeUrl(id) {
-    return getImgById(id).url
-}
 
 
 function onRemoveText() {
@@ -177,21 +185,25 @@ function onDisplayInputFile() {
 
 
 //filter by box filter
-function onFilterMemes(txt) {
+function onFilterMemes(theme) {
+    var strHtml = ``
     var imgs = getImgs()
-    var newImgs = imgs.filter(function (img) {
+    var newImgs = imgs.filter((img) => {
         var keyWords = img.keyWords
-        console.log(keyWords)
-        var isInclude = keyWords.find(keyword => keyword.startsWith(txt.toLowerCase()))
-        if (isInclude) return img
+        return keyWords.find(keyword => keyword.startsWith(theme.toLowerCase()))
     })
 
-    var strHtml = ``
     newImgs.forEach(img => {
         strHtml += `<img class="meme-image" src="${img.url}" id="${img.id}" onclick="onCreateMeme('${img.id}')">`
     })
     document.querySelector('.img-container').innerHTML = strHtml
+
 }
+
+
+
+
+
 
 
 

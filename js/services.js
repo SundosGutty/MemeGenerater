@@ -2,6 +2,9 @@
 
 var gMemes = []
 var gIdx = 0
+var gWords = {
+
+}
 
 var gImages = [
     {
@@ -107,11 +110,11 @@ var gMeme = {
             txt: 'Challenge your inner commedian!',
             font: 'IMPACT',
             size: 26,
-            align: 'CENTER',
+            align: 'center',
             innerColor: 'white',
             strColor: 'black',
-            positionX: 40,
-            positionY: 50,
+            positionX: gCanvas.width / 2,
+            positionY: 30,
         },
         // {
         //     txt: 'Try more!',
@@ -127,24 +130,36 @@ var gMeme = {
 }
 
 
+function getLineIdx() {
+    return gMeme.selectedLineIdx
+}
+
+
 function getMemeText(lineIdx) {
     return gMeme.lines[lineIdx].txt
 }
 
 
 function changeSize(num) {
-    // if (gFocustxt) {
     if (gMeme.lines.length === 0) return
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].size += num
-    // }
+
 }
 
 
 function alignText(aligPs) {
-    if (gMeme.lines.length === 0) return
+    // if (gMeme.lines.length === 0) return
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].align = aligPs
+
+}
+
+
+function removeLine() {
+    if (gMeme.lines.length === 0) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].txt = ''
 
 }
 
@@ -172,9 +187,16 @@ function setLine() {
 }
 
 
-function getImgById() {
-    var img = gImages.find((img) => img.id === gMeme.selectedImgId)
-    return img
+function getMemeUrl() {
+    var idx = getImgId()
+    console.log(idx)
+    return gImages[idx].url
+}
+
+
+function getImgId() {
+    var imgIdx = gImages.findIndex((img) => img.id == gMeme.selectedImgId)
+    return imgIdx
 }
 
 
@@ -184,7 +206,7 @@ function getCurrImgId() {
 
 
 function getSelectedImg(id) {
-    gMeme.selectedImgId = +id
+    gMeme.selectedImgId += id
 }
 
 function getMeme() {
@@ -196,9 +218,3 @@ function getImgs() {
 }
 
 
-function removeLine() {
-    if (gMeme.lines.length === 0) return
-    const lineIdx = gMeme.selectedLineIdx
-    gMeme.selectedLineIdx = 0
-    gMeme.lines.splice(lineIdx, 1)
-}

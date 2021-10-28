@@ -21,7 +21,6 @@
                 <li><a href="index.html">Galery</a></li>
                 <li><a href="memes.html">Memes</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
                 <li class="dropdown">Language<span class="fa fa-angle-double-down"></span>
                     <ul class="dropbtn dropdown-content clean-list ">
                         <li><a onclick="onSetLang('EN')">English</a></li>
@@ -79,9 +78,9 @@
                 <div class="btn-gr2">
                     <button value="PLUS" onclick="onChangeTextSize(1)" class="fa fa-font"><span>+</span></button>
                     <button value="MINUS" onclick="onChangeTextSize(-1)" class="fa fa-font"><span>-</span></button>
-                    <button value="CENTER" onclick="onAlignText(value)" class="fa fa-align-center"></button>
-                    <button value="LEFT" onclick="onAlignText(value)" class="fa fa-align-left"></button>
-                    <button value="RIGHT" onclick="onAlignText(value)" class="fa fa-align-right"></button>
+                    <button onclick="onAlignText('right')" class="fa fa-align-left "></button>
+                    <button onclick="onAlignText('center')" class="fa fa-align-center "></button>
+                    <button onclick="onAlignText('left')" class="fa  fa-align-right"></button>
                     <select id="fonts" class="fonts-selection" onkeyup="onChangeFont(value)">
                         <option value="">Ariel</option>
                         <option value="">Impact</option>
@@ -89,8 +88,8 @@
                         <option value="">Verdana</option>
                     </select>
                     <button class="fa fa-strikethrough">
-                        <input  class="control-color-input" type="color"
-                            oninput="onChangeStokeColor(value)" title="Choose Outline color">
+                        <input class="control-color-input" type="color" oninput="onChangeStokeColor(value)"
+                            title="Choose Outline color">
                         <span></span></button>
                     <button class="fa palette"><input class="control-color-input" type="color"
                             oninput="onChangeTextColor(value)" title="Choose color"
@@ -121,8 +120,8 @@
 
     <script src="js/utilitis.js"></script>
     <script src="js/exp-inp.js"></script>
-    <script src="js/services.js"></script>
     <script src="js/controler.js"></script>
+    <script src="js/services.js"></script>
 
 
 </body>

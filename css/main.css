@@ -63,7 +63,6 @@ a:is(:link, :active, :visited).active {
   padding-right: 30px;
   cursor: pointer;
   text-align: center;
-  
 }
 
 .dropdown-content {
@@ -172,29 +171,22 @@ a:is(:link, :active, :visited).active {
 
 /* img container */
 
-
 .img-container {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
 }
 
-
-.img-container img{
+.img-container img {
   cursor: pointer;
 }
 
-
-
-
 /* editor-container */
-
 
 .editor-container {
   display: flex;
   justify-content: center;
 }
-
 
 .btn-gr1 .fa {
   background-color: white;
@@ -212,8 +204,7 @@ a:is(:link, :active, :visited).active {
   height: 50px;
 }
 
-
-.file-input{
+.file-input {
   background-color: white;
   border: 1px solid;
   box-shadow: 5px 5px 16px 0px #948e8e;
@@ -241,15 +232,14 @@ a:is(:link, :active, :visited).active {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr) 100px 1fr;
   gap: 15px;
-} 
+}
 
 .userTxt {
   grid-column: 1/5;
   grid-row: 1/2;
 }
 
-
-.fa-upload{
+.fa-upload {
   grid-column: 5/6;
   grid-row: 1/2;
 }
@@ -259,12 +249,11 @@ a:is(:link, :active, :visited).active {
   grid-column: 1/6;
   grid-row: 2/3;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr;
   padding: 5px;
-  
 }
 
-.btn-gr2{
+.btn-gr2 {
   display: grid;
   grid-column: 1/6;
   grid-row: 3/5;
@@ -274,76 +263,64 @@ a:is(:link, :active, :visited).active {
   gap: 5px;
 }
 
-
-.fonts-selection{
+.fonts-selection {
   grid-column: 1/4;
   grid-row: 4/5;
-  
 }
 
-.fa-strikethrough{
+.fa-strikethrough {
   grid-column: 4/5;
   grid-row: 4/5;
-  
 }
 
-.palette{
+.palette {
   grid-column: 5/6;
   grid-row: 4/5;
-  
 }
 
-.stikers-container{
+.stikers-container {
   display: grid;
   grid-column: 1/6;
   grid-row: 5/6;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 30px ;
+  grid-template-rows: 30px;
   border: 1px black solid;
 }
 
-.save-btns{
+.save-btns {
   display: grid;
   grid-column: 1/6;
   grid-row: 6/7;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr;
   padding: 5px;
-  gap: 5px; 
-} 
-
-.save-btns button{
-  width: 140px;
-  height: 50px;
-  padding: 5px; 
- 
+  gap: 5px;
 }
 
+.save-btns button {
+  width: 140px;
+  height: 50px;
+  padding: 5px;
+}
 
-
-
-.share-container a{
+.share-container a {
   text-decoration: none;
   cursor: pointer;
   color: black;
 }
 
-.a-btn{
+.a-btn {
   text-decoration: none;
   width: 140px;
   height: 50px;
-  padding: 5px; 
+  padding: 5px;
   cursor: pointer;
   border: black 1px solid;
   color: black;
   box-shadow: 5px 5px 16px 0px #948e8e;
   text-align: center;
   padding-top: 15px;
-
 }
-
-
-
 
 /* footer */
 
@@ -360,16 +337,22 @@ p a {
   text-align: center;
 }
 
-
-
 /* contact-html */
 
-
-.contact{
-/* text-align: center; */
-display: flex;
+.by-email{
+  /* text-align: center; */
+  display: flex;
+  justify-items: center;
 
 }
+
+.by-socials{
+  /* text-align: center; */
+  display: flex;
+  justify-items: center;
+}
+
+
 
 /* HELPERS */
 
@@ -379,9 +362,10 @@ display: flex;
   list-style-type: none;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
+
 /* flex */
 
 .flex {
@@ -403,6 +387,3 @@ display: flex;
 .topnav .icon {
   display: none;
 }
-
-
-
