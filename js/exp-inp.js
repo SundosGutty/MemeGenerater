@@ -1,6 +1,6 @@
 'use strict'
 
-
+//download to computer
 function downloadImg(elLink) {
     var imgContent = gElCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
@@ -26,7 +26,7 @@ function loadImageFromInput(ev, onImageReady) {
 }
 
 
-
+//sahre to fc
 function shareToExternalSorce() {
     const facebookIcon = document.querySelector('.fa-facebook').style.display = 'none'
     const imgDataUrl = gCanvas.toDataURL("image/jpeg");
@@ -64,6 +64,8 @@ function doUploadImg(imgDataUrl, onSuccess) {
 }
 
 
+
+//upload
 function onImgInput(ev) {
     loadImageFromInput(ev, renderImg)
 }
@@ -83,6 +85,5 @@ function loadImageFromInput(ev, onImageReady) {
 
 
 function renderImg(img) {
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
-
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }

@@ -4,14 +4,14 @@ var gImg;
 var gCurrtMeme;
 var gCanvas;
 var gCtx;
-var dataURL;
+var gFont = 'IMPACT'
+
 
 function onInit() {
     renderGallery()
     renderCanvas()
     gCanvas.width = 450
     gCanvas.height = 450
-    // shareToExternalSorce()
 }
 
 
@@ -26,32 +26,48 @@ function renderGallery() {
 }
 
 
-
 function onCreateMeme(imgId) {
     setPage()
     getSelectedImg(imgId)
     var currImgId = getCurrImgId()
     onDisplayMeme(currImgId)
     renderCanvas()
-    
+
 }
 
-
-function onAddLine() {
-    setLine()
+function onChangeStokeColor(color) {
+    editMeme('strColor', color)
     onDisplayMeme()
 }
 
 
-function onChangeStokeColor() {
+function onChangeTextSize(num) {
+    changeSize(num)
+    onDisplayMeme()
 
 }
 
 
+function editMeme(key, value) {
+    if (gMeme.lines.length === 0) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx][key] = value
+}
+
+function onChangeTextColor(color) {
+    editMeme('innerColor', color)
+    onDisplayMeme()
+}
+
+function onAlignText(pos) {
+    alignText(pos)
+}
+
 function renderCanvas() {
     gCanvas = document.querySelector('#meme-canvas')
     gCtx = gCanvas.getContext('2d')
-    renderImg()
+    // renderImg()
+    onDisplayMeme()
 }
 
 function renderImg(img) {
@@ -59,14 +75,11 @@ function renderImg(img) {
 }
 
 function onDisplayMeme(imgId) {
-    var meme = getMeme()
-    var idx = returnIdx()
-    var txt = meme.lines[idx].txt
     var meme = new Image()
     meme.src = onGetMemeUrl(imgId)
     meme.onload = function () {
         gCtx.drawImage(meme, 0, 0, gCanvas.width, gCanvas.height)
-        drawText(txt, 10, 50)
+        drawText()
     }
 }
 
@@ -75,40 +88,45 @@ function onsendInput(elTxt) {
     var meme = getMeme()
     var idx = returnIdx()
     meme.lines[idx].txt = elTxt.value
-    console.log(elTxt.value)
 
     drawText(elTxt.value, 30, 50)
     onDisplayMeme()
 }
 
 
-function drawText(text, x, y) {
-    gCtx.lineWidth = 2;
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
-    gCtx.font = '40px IMPACT'
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
-
+function drawText() {
+    for (var i = 0; i < gMeme.lines.length; i++) {
+        var textFromMeme = getMemeText(i)
+        gCtx.lineWidth = 2
+        gCtx.strokeStyle = gMeme.lines[i].strColor
+        gCtx.fillStyle = gMeme.lines[i].innerColor
+        gCtx.font = `${gMeme.lines[i].size}px ${gFont}`;
+        gCtx.textAlign = gMeme.lines[i].align
+        var positionX = gMeme.lines[i].positionX
+        var positionY = gMeme.lines[i].positionY
+    }
+    gCtx.fillText(textFromMeme, positionX, positionY)
+    gCtx.strokeText(textFromMeme, positionX, positionY)
 }
 
-// function onChangeStokeColor(color) {
-//     setStroke(color)
-//     onDisplayMeme()
-// }
 
-// function onChangeTextColor(color){
-//   setTxtColor(color)
-//   onDisplayMeme()
-// }
+
+
 
 function onGetMemeUrl(id) {
     return getImgById(id).url
 }
 
 
+function onRemoveText() {
+    removeLine()
+    renderCanvas()
+
+}
+
+
 function onClearCanvas() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
 }
 
 
@@ -116,6 +134,7 @@ function setPage() {
     document.querySelector('.img-container').style.display = 'none'
     document.querySelector('.canvas-container').style.display = 'block'
     document.querySelector('.canvas-editors').style.display = 'block'
+    document.querySelector('.search-sec').style.display = 'none'
 }
 
 
@@ -128,26 +147,15 @@ const navLinks = document.querySelectorAll('a').forEach(link => {
     }
 })
 
-//TO DO - FILTER
-function onFilterMemes(val) {
-    if (val === 'Funny') console.log('Funny')
-    if (val === 'Animal') console.log('Animal')
-    if (val === 'Bad') console.log('Bad')
-    if (val === 'Funny') console.log('Funny')
-    if (val === 'Funny') console.log('Funny')
-
-}
 
 //TO DO - SET-lANG
 function onSetLang(lang) {
     if (lang === 'HE') console.log('he')
     if (lang === 'EN') console.log('en')
-    if (lang === 'AR') console.log('ar')
-    if (lang === 'FR') console.log('fr')
 }
 
 
-
+//to Do update e-mail
 function OnGetEmailLink() {
     var userEmailInput = document.querySelector('[name="user-email"]').value
     var userSubInput = document.querySelector('[name="user-subject"]').value
@@ -163,6 +171,27 @@ function toggleMenu() {
 }
 
 
-function onDisplayInputFile(){
+function onDisplayInputFile() {
     document.querySelector('.file-input').style.display = 'block'
 }
+
+
+//filter by box filter
+function onFilterMemes(txt) {
+    var imgs = getImgs()
+    var newImgs = imgs.filter(function (img) {
+        var keyWords = img.keyWords
+        console.log(keyWords)
+        var isInclude = keyWords.find(keyword => keyword.startsWith(txt.toLowerCase()))
+        if (isInclude) return img
+    })
+
+    var strHtml = ``
+    newImgs.forEach(img => {
+        strHtml += `<img class="meme-image" src="${img.url}" id="${img.id}" onclick="onCreateMeme('${img.id}')">`
+    })
+    document.querySelector('.img-container').innerHTML = strHtml
+}
+
+
+

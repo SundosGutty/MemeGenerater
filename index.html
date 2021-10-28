@@ -40,11 +40,11 @@
                 onkeyup="onFilterMemes(value)">
             <span class="fa fa-search"></span>
             <datalist id="theme-search">
-                <option value="Funny">
-                <option value="Animal">
-                <option value="Bad">
-                <option value="Awkward">
-                <option value="Happy">
+                <option value="funny">
+                <option value="animal">
+                <option value="bad">
+                <option value="awkward">
+                <option value="happy">
             </datalist>
         </div>
         <div class="search-words">
@@ -66,7 +66,7 @@
         <div class="canvas-editors hidden">
             <div class="editors main-layout">
                 <input class="userTxt" type="text" id="text" placeholder="Go wild!" oninput="onsendInput(this)">
-                <button class="fa fa-upload" onclick="onDisplayInputFile()">
+                <button class="fa fa-upload" onclick="onDisplayInputFile()"> -->
                     <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
                 </button>
                 <div class="btn-gr1">
@@ -84,16 +84,17 @@
                     <button value="RIGHT" onclick="onAlignText(value)" class="fa fa-align-right"></button>
                     <select id="fonts" class="fonts-selection" onkeyup="onChangeFont(value)">
                         <option value="">Ariel</option>
-                        <option value="">Saab</option>
-                        <option value="">Opel</option>
-                        <option value="">Audi</option>
+                        <option value="">Impact</option>
+                        <option value="">Times New Roman</option>
+                        <option value="">Verdana</option>
                     </select>
                     <button class="fa fa-strikethrough">
-                        <input type="color" oninput="onChangeStokeColor(value)">
-                    </button>
-                    <button class="fa palette">🎨
-                        <input type="color" oninput="onChangeTextColor(value)">
-                    </button>
+                        <input  class="control-color-input" type="color"
+                            oninput="onChangeStokeColor(value)" title="Choose Outline color">
+                        <span></span></button>
+                    <button class="fa palette"><input class="control-color-input" type="color"
+                            oninput="onChangeTextColor(value)" title="Choose color"
+                            data-trans="fill-color" /><span>🎨</span></button>
                 </div>
                 <div class="stikers-container">
 

@@ -97,44 +97,67 @@ var gImages = [
 ]
 
 
+
+
 var gMeme = {
     selectedImgId: 1,
-    selectedLineIdx: gIdx,
+    selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Be creative!',
-            font: '',
-            size: 10,
-            align: 'left',
-            color: 'red',
-            strColor: ''
-            // positionX: 40px, 
-            // positionY:
-
-
+            txt: 'Challenge your inner commedian!',
+            font: 'IMPACT',
+            size: 26,
+            align: 'CENTER',
+            innerColor: 'white',
+            strColor: 'black',
+            positionX: 40,
+            positionY: 50,
         },
-        {
-            txt: 'Try more!',
-            size: 10,
-            align: 'left',
-            color: 'red',
-            strColor: ''
-        }
+        // {
+        //     txt: 'Try more!',
+        //     size: 30,
+        //     align: 'left',
+        //     color: 'red',
+        //     strColor: 'blue',
+        //     positionX: 350, 
+        //     positionY:  350,
+        // }
     ]
 
 }
 
 
-function setStroke(val) {
-    console.log(val)
-    var lineIdx = gMeme.selectedLineIdx
-    gMemes[lineIdx].color = val
+function getMemeText(lineIdx) {
+    return gMeme.lines[lineIdx].txt
 }
 
 
-function setTxtColor(val) {
-    var lineIdx = gMeme.selectedLineIdx
-    gMemes[lineIdx].color = val
+function changeSize(num) {
+    // if (gFocustxt) {
+    if (gMeme.lines.length === 0) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].size += num
+    // }
+}
+
+
+function alignText(aligPs) {
+    if (gMeme.lines.length === 0) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].align = aligPs
+
+}
+
+
+function setStroke(color) {
+    console.log(color)
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].strColor = color
+}
+
+function setTxtColor(color) {
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].innerColor = color
 }
 
 
@@ -150,7 +173,6 @@ function setLine() {
 
 
 function getImgById() {
-    console.log(img)
     var img = gImages.find((img) => img.id === gMeme.selectedImgId)
     return img
 }
@@ -174,3 +196,9 @@ function getImgs() {
 }
 
 
+function removeLine() {
+    if (gMeme.lines.length === 0) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.selectedLineIdx = 0
+    gMeme.lines.splice(lineIdx, 1)
+}

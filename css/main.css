@@ -63,6 +63,7 @@ a:is(:link, :active, :visited).active {
   padding-right: 30px;
   cursor: pointer;
   text-align: center;
+  
 }
 
 .dropdown-content {
@@ -315,7 +316,10 @@ a:is(:link, :active, :visited).active {
   width: 140px;
   height: 50px;
   padding: 5px; 
+ 
 }
+
+
 
 
 .share-container a{
@@ -354,6 +358,17 @@ p a {
   background-color: orange;
   font-size: 20px;
   text-align: center;
+}
+
+
+
+/* contact-html */
+
+
+.contact{
+/* text-align: center; */
+display: flex;
+
 }
 
 /* HELPERS */
