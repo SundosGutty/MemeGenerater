@@ -138,7 +138,7 @@ var gMeme = {
             txt: 'Try more!',
             size: 30,
             align: 'left',
-            color: 'red',
+            innerColor: 'red',
             strColor: 'blue',
             positionX: 350,
             positionY: 350,
@@ -147,21 +147,27 @@ var gMeme = {
 
 }
 
-
 function addLine() {
     var line = {
         txt: 'Add new text here',
-        font: 'impact',
         size: 40,
         align: 'center',
-        OutlineColor: 'black',
-        fillColor: 'white',
+        font: 'impact',
+        innerColor: 'black',
+        strColor: 'white',
         positionX: 225,
         positionY: 225
     }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx++
 }
+
+function editMeme(key, value) {
+    if (gMeme.lines.length === 0) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx][key] = value
+}
+
 
 
 function changeFont(font) {

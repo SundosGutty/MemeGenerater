@@ -1,22 +1,20 @@
 'use strict'
 
 var gImg;
-var gCurrtMeme;
+// var gCurrtMeme;
 const gCanvas = document.querySelector('#meme-canvas')
 const gCtx = gCanvas.getContext('2d')
 var gFont = 'Impact'
 gCanvas.width = 450
 gCanvas.height = 450
-var gIsSaveProcess = false
+var CurrLine;
+
 
 
 
 function onInit() {
     renderGallery()
     renderCanvas()
-    gCanvas.width = 450
-    gCanvas.height = 450
-
 }
 
 
@@ -54,13 +52,6 @@ function onChangeTextSize(num) {
 
 }
 
-
-function editMeme(key, value) {
-    if (gMeme.lines.length === 0) return
-    const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx][key] = value
-}
-
 function onChangeTextColor(color) {
     editMeme('innerColor', color)
     renderCanvas()
@@ -82,23 +73,33 @@ function renderCanvas() {
     meme.src = getMemeUrl()
     meme.onload = function () {
         gCtx.drawImage(meme, 0, 0, gCanvas.width, gCanvas.height)
-        drawText()
+        renderText()
     }
 }
 
 
-function onsendInput(elTxt) {
-    var meme = getMeme()
-    var idx = returnIdx()
-    meme.lines[idx].txt = elTxt.value
-    renderCanvas()
-}
-
-
-function drawText() {
+function renderText() {
     var meme = getMeme()
     var idx = getLineIdx()
     var currLine = meme.lines[idx]
+    var lines = meme.lines
+    if (lines.length === 0) return
+    meme.lines.forEach(line => drawText(line))
+    document.querySelector('.userTxt').value = currLine.txt
+}
+
+
+// function drawRect() {
+//     var heightText = currLine.size
+//     var y = positionY
+//     gCtx.beginPath()
+//     gCtx.rect(10, y - heightText, gCanvas.width - 20, heightText + 10)
+//     gCtx.strokeStyle = 'black'
+//     gCtx.stroke()
+
+// }
+
+function drawText(currLine) {
     gCtx.lineWidth = 2
     gCtx.fillStyle = currLine.innerColor
     gCtx.font = `${currLine.size}px ${gFont}`
@@ -108,38 +109,48 @@ function drawText() {
 
     var positionX = currLine.positionX
     var positionY = currLine.positionY
-    if (!gIsSaveProcess) {
-        if (gMeme.selectedLineIdx === idx) {
-            var heightText = currLine.size
-            var y = positionY
-            gCtx.beginPath()
-            gCtx.rect(10, y - heightText, gCanvas.width - 20, heightText + 10)
-            gCtx.strokeStyle = 'black'
-            gCtx.stroke()
-        }
-    }
+
+
     gCtx.fillText(currLine.txt, positionX, positionY)
     gCtx.restore()
     gCtx.strokeText(currLine.txt, positionX, positionY)
-  
+
 }
 
+function onsendInput(elTxt) {
+    var meme = getMeme()
+    var idx = returnIdx()
+    meme.lines[idx].txt = elTxt.value
+    renderCanvas()
+}
+
+// function onSwitchLines() {
+
+
+// }
+
 function onAddLine() {
+    document.querySelector('.userTxt').value = ''
     addLine()
     renderCanvas()
 }
 
+
 function onRemoveText() {
+    document.querySelector('.userTxt').value = ''
     removeLine()
     renderCanvas()
-
 }
 
+
+//delete the input once I click enter
 document.querySelector('#text').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-      
+        document.querySelector('.userTxt').value = ''
     }
 })
+
+
 
 
 function setPage() {
