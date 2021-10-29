@@ -11,34 +11,42 @@
 </head>
 
 <body>
-    <header class="navbar flex space-between">
-        <div class="logo">
-            <h1 class="heading">Memegenerator</h1>
-            <h4 class="sub-heading">Your Meme Stock</h4>
-        </div>
-        <nav class="navbar topnav flex">
-            <ul class="main-nav flex clean-list flex space-between align-center">
-                <li><a href="index.html">Galery</a></li>
-                <li><a href="memes.html">Memes</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">Language<span class="fa fa-angle-double-down"></span>
-                    <ul class="dropbtn dropdown-content clean-list ">
-                        <li><a onclick="onSetLang('EN')">English</a></li>
-                        <li><a onclick="onSetLang('HE')">Hebrew</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <button class="btn-menu fa fa-bars" onclick="toggleMenu()"></button>
-        </nav>
-    </header>
+    <body onload="onInit()">
+        <header class="navbar flex space-between">
+            <div class="logo">
+                <h1 class="heading">Memegenerator</h1>
+                <h4 class="sub-heading">Your Meme Stock</h4>
+            </div>
+            <nav class="navbar topnav flex">
+                <ul class="main-nav flex clean-list  space-between align-center">
+                    <li><a href="index.html">Galery</a></li>
+                    <li><a href="memes.html">Memes</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">Language<span class="fa fa-angle-double-down"></span>
+                        <ul class="dropbtn dropdown-content clean-list ">
+                            <li><a onclick="onSetLang('EN')">English</a></li>
+                            <li><a onclick="onSetLang('HE')">Hebrew</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="btn-menu fa fa-bars" onclick="toggleMenu()"></button>
+            </nav>
+        </header>
 
+    <h1>Your Edited Memes</h1>
 
+    <footer class="footer">
+        <h4 class="logo">MemeGenerator</h4>
+        <p>Presented By <a href="about.html">Sundos Guty</a></p>
+        <p>&copy; Copyright 2021, All Right Reserved</p>
+    </footer>
 
 
     <script src="js/utilitis.js"></script>
     <script src="js/exp-inp.js"></script>
-    <script src="js/services.js"></script>
+    <script src="js/meme.controler.js"></script>
     <script src="js/controler.js"></script>
+    <script src="js/services.js"></script>
 </body>
 
 </html>

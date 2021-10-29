@@ -1,8 +1,7 @@
 'use strict'
-
-gCanvas.width = 450
-gCanvas.height = 450
-
+var gImg;
+gCanvas.width = 450 
+gCanvas.height = 450 
 
 let gKeywords = {
     'happy': 12,
@@ -133,29 +132,27 @@ let gMeme = {
             align: 'center',
             innerColor: 'white',
             strColor: 'black',
-            positionX: gCanvas.width / 2,
+            positionX: 225,
             positionY: 30,
             id: getRandomeId()
         },
-        // {
-        //     txt: 'Try more!',
-        //     size: 30,
-        //     align: 'left',
-        //     innerColor: 'red',
-        //     strColor: 'blue',
-        //     positionX: 350,
-        //     positionY: 350,
-        // }
+        {
+            txt: '',
+            size: 26,
+            font: 'Impact',
+            align: 'center',
+            innerColor: 'white',
+            strColor: 'black',
+            positionX: 225,
+            positionY: 400,
+            id: getRandomeId()
+        }
     ]
 
 }
 
-function getLineIdxById(id) {
-    return gMeme.lines.findIndex(function (line) {
-        return line.id === id
-    })
-}
 
+//edit the canvas
 
 function switchFocus() {
     if (gMeme.lines.length === 0) return
@@ -167,11 +164,11 @@ function switchFocus() {
 function addLine() {
     let line = {
         txt: '',
-        size: 40,
+        size: 26,
         align: 'center',
         font: 'impact',
-        innerColor: 'black',
-        strColor: 'white',
+        innerColor: 'white',
+        strColor: 'black',
         positionX: 225,
         positionY: 225,
         id: getRandomeId()
@@ -181,42 +178,42 @@ function addLine() {
 }
 
 
-function changeOutlineColor(color){
+function changeOutlineColor(color) {
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].strColor = color
 
 }
 
 
-function changeFillColor(color){
+function changeFillColor(color) {
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].innerColor = color
 
 }
 
 
-//changes the global font
 function changeFont(font) {
     gFont = font
 }
 
 
-
-function getLineIdx() {
-    return gMeme.selectedLineIdx
+function moveLineUp(val) {
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].positionY -= val
 }
 
 
-function getMemeText(lineIdx) {
-    return gMeme.lines[lineIdx].txt
+function moveLineDown(val) {
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].positionY -= val
+
 }
 
-//font size
+
 function changeSize(num) {
     if (gMeme.lines.length === 0) return
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].size += num
-
 }
 
 
@@ -232,20 +229,35 @@ function removeLine() {
     if (gMeme.lines.length === 0) return
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].txt = ''
-
 }
 
 
-//the txt input
 function sendInput(userTxt) {
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].txt = userTxt
 }
 
 
+
+//helpers
 function getImgUrl() {
     const idx = getImgId()
     return gImages[idx].url
+}
+
+function getLineIdx() {
+    return gMeme.selectedLineIdx
+}
+
+
+function getMemeText(lineIdx) {
+    return gMeme.lines[lineIdx].txt
+}
+
+function getLineIdxById(id) {
+    return gMeme.lines.findIndex(function (line) {
+        return line.id === id
+    })
 }
 
 
@@ -272,4 +284,22 @@ function getImgs() {
     return gImages
 }
 
+//upload
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.file-input').innerHTML = ''
+    var reader = new FileReader()
+
+    reader.onload = function (event) {
+        var img = new Image()
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+        gImg = img
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+
+function renderImg(img) {
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+}
 

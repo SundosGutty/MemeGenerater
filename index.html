@@ -17,7 +17,7 @@
             <h4 class="sub-heading">Your Meme Stock</h4>
         </div>
         <nav class="navbar topnav flex">
-            <ul class="main-nav flex clean-list flex space-between align-center">
+            <ul class="main-nav flex clean-list  space-between align-center">
                 <li><a href="index.html">Galery</a></li>
                 <li><a href="memes.html">Memes</a></li>
                 <li><a href="about.html">About</a></li>
@@ -64,13 +64,18 @@
         </div>
         <div class="canvas-editors hidden">
             <div class="editors main-layout">
-                <input class="userTxt" type="text" id="text" placeholder="Go wild!" oninput="onsendInput(this.value)">
-                <button class="fa fa-upload" onclick="onDisplayInputFile()">
+                <input class="userTxt" type="text" id="text" placeholder="  Challenge your inner comedian!"
+                    oninput="onsendInput(this.value)">
+                <!-- <button class="fa fa-upload" onclick="onDisplayInputFile()">
                     <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-                </button>
+                </button> -->
+                <!-- <button class="btn fa fa-upload" onclick="onImgInput(event)"></button> -->
+                <input type="file" class="file-input btn fa fa-upload" name="image" onchange="onImgInput(event)" />
+
+
                 <div class="btn-gr1">
-                    <button value="UP" onclick="" class="fa fa-arrow-up"></button>
-                    <button value="DOWN" onclick="" class="fa fa-arrow-down"></button>
+                    <button value="UP" onclick="onMoveLineUp(4)" class="fa fa-arrow-up"></button>
+                    <button value="DOWN" onclick="onMoveLineDown(-4)" class="fa fa-arrow-down"></button>
                     <button onclick="onSwitchFocus()" class="fa fa-exchange"></button>
                     <button onclick="onAddLine()" class="fa fa-plus"></button>
                     <button onclick="onRemoveText()" class="fa fa-trash"></button>
@@ -90,12 +95,12 @@
                         <input class="control-color-input" type="color" oninput="onChangeOutlineColor(value)"
                             title="Choose Outline color">
                         <span></span></button>
-                    <button class="fa palette"><input class="control-color-input" type="color"
-                            oninput="onChangeFillColor(value)" title="Choose color"
-                            data-trans="fill-color" /><span>🎨</span></button>
+                    <button class="fa palette"><span>🎨</span><input class="control-color-input" type="color"
+                            oninput="onChangeFillColor(value)" title="Choose color" /></button>
                 </div>
-                <div class="stikers-container">
 
+                <div class="stikers-container">
+                       
                 </div>
                 <div class="save-btns">
                     <button onclick="shareToExternalSorce()" class="fc-btn share-container "><span
@@ -119,8 +124,8 @@
 
     <script src="js/utilitis.js"></script>
     <script src="js/exp-inp.js"></script>
-    <script src="js/meme.controler.js"></script>
     <script src="js/controler.js"></script>
+    <script src="js/meme.controler.js"></script>
     <script src="js/services.js"></script>
 
 

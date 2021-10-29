@@ -1,6 +1,9 @@
 'use strict'
 
 let gFont = 'Impact'
+const gCanvas = document.querySelector('#meme-canvas')
+const gCtx = gCanvas.getContext('2d')
+var CurrLine
 
 
 function onCreateMeme(imgId) {
@@ -35,7 +38,16 @@ function onAlignText(pos) {
     renderCanvas()
 }
 
+function onMoveLineUp(num){
+    moveLineUp(num)
+    renderCanvas()
+}
 
+
+function onMoveLineDown(num){
+    moveLineDown(num)
+    renderCanvas()
+}
 
 function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)

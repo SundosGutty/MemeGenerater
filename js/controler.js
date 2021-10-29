@@ -1,11 +1,6 @@
 'use strict'
 
 
-const gCanvas = document.querySelector('#meme-canvas')
-const gCtx = gCanvas.getContext('2d')
-var CurrLine
-
-
 
 function onInit() {
     renderGallery()
@@ -58,7 +53,9 @@ function onSetLang(lang) {
     if (lang === 'EN') console.log('en')
 }
 
-
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderImg)
+}
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open')

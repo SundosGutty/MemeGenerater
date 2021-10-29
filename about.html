@@ -12,68 +12,82 @@
 
 <body>
 
-    <header class="navbar flex space-between">
-        <div class="logo">
-            <h1 class="heading">Memegenerator</h1>
-            <h4 class="sub-heading">Your Meme Stock</h4>
+    <body onload="onInit()">
+        <header class="navbar flex space-between">
+            <div class="logo">
+                <h1 class="heading">Memegenerator</h1>
+                <h4 class="sub-heading">Your Meme Stock</h4>
+            </div>
+            <nav class="navbar topnav flex">
+                <ul class="main-nav flex clean-list  space-between align-center">
+                    <li><a href="index.html">Galery</a></li>
+                    <li><a href="memes.html">Memes</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">Language<span class="fa fa-angle-double-down"></span>
+                        <ul class="dropbtn dropdown-content clean-list ">
+                            <li><a onclick="onSetLang('EN')">English</a></li>
+                            <li><a onclick="onSetLang('HE')">Hebrew</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="btn-menu fa fa-bars" onclick="toggleMenu()"></button>
+            </nav>
+        </header>
+
+
+    <main class="about-container ">
+        <img class="about-img" src="aboutImg/my-img (12).jpg" alt="">
+        <div class="about-me">
+            <p class="about-txt">Hello, my name is <span class="creator-name">Sundos Gutty</span>.
+                I'm a Full Stack Web Developer student, with experience in writing single-page-applications using the
+                latest
+                WEB
+                technologies such as JavaScript (ES6, ES5). Hard worker, self-learner, team player with strong
+                communication
+                skills.
+              
+            </p>
+
+
+            <section class="by-socials">
+                <p> You can contact me through:</p>
+                <ul class="flex clean-list">
+                    <li> <a href="https://www.facebook.com/soundos.goutti" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sundos-guty-0382a71b4" target="_blank">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/SundosGutty" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/sundosguty?utm_medium=copy_link" target="_blank">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </section>
         </div>
-        <nav class="navbar topnav flex">
-            <ul class="main-nav flex clean-list flex space-between align-center">
-                <li><a href="index.html">Galery</a></li>
-                <li><a href="memes.html">Memes</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">Language<span class="fa fa-angle-double-down"></span>
-                    <ul class="dropbtn dropdown-content clean-list ">
-                        <li><a onclick="onSetLang('EN')">English</a></li>
-                        <li><a onclick="onSetLang('HE')">Hebrew</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <button class="btn-menu fa fa-bars" onclick="toggleMenu()"></button>
-        </nav>
-    </header>
-    <main>
-        <!-- <img src="" alt=""> -->
-        <p>Hello, my name is Sundos Gutty.
-            I'm a Full Stack Web Developer student, with experience in writing single-page-applications using the latest
-            WEB
-            technologies such as JavaScript (ES6, ES5). Hard worker, self-learner, team player with strong communication
-            skills.
-        <h3>You can also contact me through:</h3>
     </main>
 
-    <section class="by-socials">
-        <ul>
-            <li> <a href="https://www.facebook.com/soundos.goutti" target="_blank">
-                    <i class="fa fa-facebook"></i>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.linkedin.com/in/sundos-guty-0382a71b4" target="_blank">
-                    <i class="fa fa-linkedin"></i>
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/SundosGutty" target="_blank">
-                    <i class="fa fa-github"></i>
-                </a>
-            </li>
-            <li>
-                <a href="https://instagram.com/sundosguty?utm_medium=copy_link" target="_blank">
-                    <i class="fa fa-instagram"></i>
-                </a>
-            </li>
-        </ul>
-
-    </section>
-
-
-
+    <footer class="footer">
+        <h4 class="logo">MemeGenerator</h4>
+        <p>Presented By <a href="about.html">Sundos Guty</a></p>
+        <p>&copy; Copyright 2021, All Right Reserved</p>
+    </footer>
 
     <script src="js/utilitis.js"></script>
-    <script src="js/exp-inp.js"></script>
-    <script src="js/services.js"></script>
+    <script src="js/exp-inp.js"></script> 
     <script src="js/controler.js"></script>
+    <script src="js/meme.controler.js"></script>
+    <script src="js/services.js"></script>
 
 </body>
 

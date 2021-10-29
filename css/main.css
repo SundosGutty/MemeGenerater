@@ -100,7 +100,7 @@ a:is(:link, :active, :visited).active {
   display: none;
 }
 
- /* @media (max-width: 920px) {
+@media (max-width: 920px) {
   .editor-container {
     flex-direction: column;
     align-items: center;
@@ -108,11 +108,11 @@ a:is(:link, :active, :visited).active {
   }
   .canvas-editors {
     align-items: center;
-    /* padding-right: 45px; */
+    padding-right: 45px; 
     /* width: 350px;
     height: 350px; */
-  /* }
-}   */
+  }
+}
 
 @media (max-width: 650px) {
   /* body {
@@ -141,7 +141,6 @@ a:is(:link, :active, :visited).active {
   .btn-menu {
     display: block;
   }
-
 }
 
 /* Search-area */
@@ -177,6 +176,10 @@ a:is(:link, :active, :visited).active {
 
 .topnav .search-container button:hover {
   background: #ccc;
+}
+
+.search-box {
+  padding-bottom: 10px;
 }
 
 .search-words {
@@ -227,7 +230,7 @@ a:is(:link, :active, :visited).active {
   border: 1px solid;
   box-shadow: 5px 5px 16px 0px #948e8e;
   cursor: pointer;
-  display: none;
+  /* display: none; */
 }
 
 .editor-container button {
@@ -360,8 +363,39 @@ p a {
 .by-socials .fa {
   display: flex;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(6, 150px);
+  grid-template-rows: repeat(5, 100px);
+  gap: 20px;
+}
+
+.about-img {
+  /* border-radius: 10px; */
+  grid-row: 2/4;
+  grid-column: 2/4;
+}
+
+.about-me {
+  grid-row: 2/4;
+  grid-column: 4/7;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+}
+
+.about-txt {
+  line-height: 35px;
+  padding-bottom: 35px;
+}
+
+.creator-name {
+  font-weight: bold;
 }
 
 /* HELPERS */

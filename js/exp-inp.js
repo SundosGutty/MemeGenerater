@@ -1,8 +1,12 @@
 'use strict'
 
+// var gImg
+// gCanvas.width = 450 
+// gCanvas.height = 450 
+
 //download to computer
 function downloadImg(elLink) {
-    var imgContent = gElCanvas.toDataURL('image/jpeg')
+    var imgContent = gCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
 
 }
@@ -10,19 +14,6 @@ function downloadImg(elLink) {
 
 function onImgInput(ev) {
     loadImageFromInput(ev, renderImg)
-}
-
-function loadImageFromInput(ev, onImageReady) {
-    document.querySelector('.share-container').innerHTML = ''
-    var reader = new FileReader()
-
-    reader.onload = function (event) {
-        var img = new Image()
-        img.onload = onImageReady.bind(null, img)
-        img.src = event.target.result
-        gImg = img
-    }
-    reader.readAsDataURL(ev.target.files[0])
 }
 
 
@@ -33,10 +24,10 @@ function shareToExternalSorce() {
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         // document.querySelector('.user-msg hidden').innerText = `Your photo is available here: ${uploadedImgUrl}`
-
+        
         document.querySelector('.share-container').innerHTML = `
         <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-           Click to share 
+        Click to share 
         </a>`
     }
     doUploadImg(imgDataUrl, onSuccess);
@@ -45,45 +36,26 @@ function shareToExternalSorce() {
 
 
 function doUploadImg(imgDataUrl, onSuccess) {
-
+    
     const formData = new FormData();
     formData.append('img', imgDataUrl)
-
+    
     fetch('//ca-upload.com/here/upload.php', {
         method: 'POST',
         body: formData
     })
-        .then(res => res.text())
-        .then((url) => {
+    .then(res => res.text())
+    .then((url) => {
             console.log('Got back live url:', url);
             onSuccess(url)
         })
         .catch((err) => {
             console.error(err)
         })
-}
-
-
-
-//upload
-function onImgInput(ev) {
-    loadImageFromInput(ev, renderImg)
-}
-
-function loadImageFromInput(ev, onImageReady) {
-    document.querySelector('.share-container').innerHTML = ''
-    var reader = new FileReader()
-
-    reader.onload = function (event) {
-        var img = new Image()
-        img.onload = onImageReady.bind(null, img)
-        img.src = event.target.result
-        gImg = img
     }
-    reader.readAsDataURL(ev.target.files[0])
-}
 
-
-function renderImg(img) {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-}
+    
+    
+    //upload
+      
+  
