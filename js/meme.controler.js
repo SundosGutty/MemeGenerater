@@ -1,8 +1,8 @@
 'use strict'
 
 let gFont = 'Impact'
-const gCanvas = document.querySelector('#meme-canvas')
-const gCtx = gCanvas.getContext('2d')
+var gCanvas = document.querySelector('#meme-canvas')
+var gCtx = gCanvas.getContext('2d')
 var CurrLine
 
 

@@ -1,35 +1,49 @@
 'use strict'
 var gImg;
-gCanvas.width = 450 
-gCanvas.height = 450 
+gCanvas.width = 450
+gCanvas.height = 450
 
-let gKeywords = {
-    'happy': 12,
-    'funny': 1,
-    'celebrity': 7,
-    'politic': 2,
-    'cute': 12,
-    'animal': 1,
-    'books': 0,
-    'comics': 6,
-    'cartoon': 0,
-    'baby': 1,
-    'love': 7,
-    'sport': 2,
-    'kid': 12,
-    'dog': 2,
-    'cat': 2,
-    'drinks': 0,
-    'movie': 4,
-    'tv': 7,
-}
+let gKeywords = [
+    {
+        category: 'funny',
+        fontSize: 13
+    },
+    {
+        category: 'celebrity',
+        fontSize: 4
+    },
+    {
+        category: 'politic',
+        fontSize: 2
+    },
+    {
+        category: 'animal',
+        fontSize: 3
+    },
+    {
+        category: 'animation',
+        fontSize: 1
+    },
+    {
+        category: 'baby',
+        fontSize: 4
+    },
+    {
+        category: 'sport',
+        fontSize: 1
+    },
+    {
+        category: 'sarcasm',
+        fontSize: 9
+    }
+]
 
 
 let gImages = [
     {
         id: 1,
         url: 'meme-imgs (square)/1.jpg',
-        keyWords: ['polics', 'funny', 'sarcasm']
+        keyWords: ['politics', 'funny', 'sarcasm']
     },
     {
         id: 2,
@@ -74,7 +88,7 @@ let gImages = [
     {
         id: 10,
         url: 'meme-imgs (square)/10.jpg',
-        keyWords: ['polics', 'happy', 'funny']
+        keyWords: ['politics', 'happy', 'funny']
     },
     {
         id: 11,
@@ -109,7 +123,7 @@ let gImages = [
     {
         id: 17,
         url: 'meme-imgs (square)/17.jpg',
-        keyWords: ['polics', 'funny', 'sarcasm']
+        keyWords: ['politics', 'funny', 'sarcasm']
     },
     {
         id: 18,
@@ -238,6 +252,9 @@ function sendInput(userTxt) {
 }
 
 
+function modifyKeyWordSize(id) {
+    gKeywords[id].fontSize += 1
+}
 
 //helpers
 function getImgUrl() {
@@ -249,6 +266,9 @@ function getLineIdx() {
     return gMeme.selectedLineIdx
 }
 
+function getKeyWords() {
+    return gKeywords
+}
 
 function getMemeText(lineIdx) {
     return gMeme.lines[lineIdx].txt
@@ -260,6 +280,12 @@ function getLineIdxById(id) {
     })
 }
 
+
+function getKeywordId(categary) {
+    return gKeywords.findIndex(function (keyWord) {
+        return keyWord.category === categary
+    })
+}
 
 function getImgId() {
     const imgIdx = gImages.findIndex((img) => img.id == gMeme.selectedImgId)

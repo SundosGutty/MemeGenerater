@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <title>MemeGenerator</title>
@@ -14,7 +16,7 @@
     <header class="navbar flex space-between">
         <div class="logo">
             <h1 class="heading">Memegenerator</h1>
-            <h4 class="sub-heading">Your Meme Stock</h4>
+            <h5 class="sub-heading">Your Meme Stock</h5>
         </div>
         <nav class="navbar topnav flex">
             <ul class="main-nav flex clean-list  space-between align-center">
@@ -36,7 +38,7 @@
     <section class="search-sec main-layout">
         <div class="search-box">
             <input class="input-bar" type="text" list="theme-search" placeholder="Search a category...."
-                onkeyup="onFilterMemes(value)">
+                onkeyup="onclickFilter(value)">
             <span class="fa fa-search"></span>
             <datalist id="theme-search">
                 <option value="funny">
@@ -48,6 +50,8 @@
         </div>
         <div class="search-words">
             <!-- Here are rendered The search Words -->
+            <section class="revealed-words"></section>
+            <section class="hidden-words"></section>
         </div>
     </section>
 
@@ -59,7 +63,7 @@
 
     <section class="editor-container main-layout hidden">
         <div class="canvas-container hidden flex">
-            <canvas id="meme-canvas" height="450" width="450">
+            <canvas id="meme-canvas" height="400" width="400">
             </canvas>
         </div>
         <div class="canvas-editors hidden">
@@ -71,7 +75,6 @@
                 </button> -->
                 <!-- <button class="btn fa fa-upload" onclick="onImgInput(event)"></button> -->
                 <input type="file" class="file-input btn fa fa-upload" name="image" onchange="onImgInput(event)" />
-
 
                 <div class="btn-gr1">
                     <button value="UP" onclick="onMoveLineUp(4)" class="fa fa-arrow-up"></button>
@@ -127,7 +130,6 @@
     <script src="js/controler.js"></script>
     <script src="js/meme.controler.js"></script>
     <script src="js/services.js"></script>
-
 
 </body>
 

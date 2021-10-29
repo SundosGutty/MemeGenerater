@@ -7,10 +7,15 @@ body {
   padding: 0;
   font-size: 1rem;
   color: white;
-  /* overflow-y: hidden; */
+  overflow-x: hidden;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 img {
+  width: 100%;
+}
+
+canvas {
   width: 100%;
 }
 
@@ -25,16 +30,18 @@ img {
 
 .logo {
   font-size: 15px;
-  padding-left: 10px;
+  padding-left: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .sub-heading {
-  padding-left: 30px;
+  line-height: 0px;
+  padding-left: 40px;
 }
 
 .navbar {
   overflow: hidden;
-  background-color: orange;
+  background-color: rgb(255, 166, 0);
 }
 
 .navbar a {
@@ -106,26 +113,108 @@ a:is(:link, :active, :visited).active {
     align-items: center;
     gap: 10px;
   }
-  .canvas-editors {
+  .editors {
     align-items: center;
-    padding-right: 45px; 
-    /* width: 350px;
-    height: 350px; */
+    padding-right: 45px;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (min-width: 820px) {
+  .editors {
+    width: 450px;
+    height: 450px;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr) 100px 1fr;
+    gap: 15px;
+  }
+  .userTxt {
+    grid-column: 1/5;
+    grid-row: 1/2;
+  }
+  .fa-upload {
+    grid-column: 5/6;
+    grid-row: 1/2;
+  }
+  .btn-gr1 {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 2/3;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    padding: 5px;
+  }
+  .btn-gr2 {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 3/5;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr;
+    padding: 5px;
+    gap: 5px;
+  }
+  .fonts-selection {
+    grid-column: 1/4;
+    grid-row: 4/5;
+  }
+  .fa-strikethrough {
+    grid-column: 4/5;
+    grid-row: 4/5;
+  }
+  .palette {
+    grid-column: 5/6;
+    grid-row: 4/5;
+  }
+  .stikers-container {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 5/6;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 30px;
+    border: 1px black solid;
+  }
+  .save-btns {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 6/7;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    padding: 5px;
+    gap: 5px;
+  }
+  .btn-gr1 .fa {
+    background-color: white;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+  }
+  .btn-gr2 .fa {
+    background-color: white;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+  }
+  .save-btns button {
+    width: 140px;
+    height: 50px;
+    padding: 5px;
   }
 }
 
 @media (max-width: 650px) {
-  /* body {
-    overflow-x: hidden;
-  } */
   .main-nav {
     position: fixed;
     top: 75px;
     right: 0;
     height: 50vh;
     flex-direction: column;
-    background-color: orange;
-    width: 100px;
+    background-color: rgb(255, 166, 0);
+    /* width: 100px; */
     transform: translateX(100%);
     transition: .5s ease-in-out;
     size: 10px;
@@ -141,6 +230,57 @@ a:is(:link, :active, :visited).active {
   .btn-menu {
     display: block;
   }
+  .editors {
+    width: 300px;
+    height: 300px;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr) 1fr 1fr;
+    gap: 15px;
+    /* margin-right: 35px; */
+    /* padding-right: 40px; */
+  }
+  .btn-gr1 {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 2/3;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    padding: 5px;
+  }
+  .btn-gr2 {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 3/5;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr;
+    padding: 5px;
+    gap: 5px;
+  }
+  .btn-gr1 .fa {
+    background-color: white;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .btn-gr2 .fa {
+    background-color: white;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .save-btns button {
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+  }
+  .canvas-container {
+    margin-right: 10px;
+  }
 }
 
 /* Search-area */
@@ -148,11 +288,14 @@ a:is(:link, :active, :visited).active {
 .search-sec {
   overflow: hidden;
   background-color: white;
-  display: flex
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .search-sec .fa {
-  color: orange;
+  color: rgb(255, 166, 0);
   height: 20px;
   width: 20px;
   cursor: pointer;
@@ -161,7 +304,21 @@ a:is(:link, :active, :visited).active {
 .input-bar {
   margin-top: 40px;
   border: none;
-  border-bottom: solid 1px orange;
+  border-bottom: solid 1px rgb(255, 166, 0);
+}
+
+textarea, input {
+  outline: none;
+}
+
+.filter-btn{
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-btn:hover{
+  color: rgb(255, 166, 0);
 }
 
 .topnav .search-container button {
@@ -174,18 +331,22 @@ a:is(:link, :active, :visited).active {
   cursor: pointer;
 }
 
+.topnav .icon {
+  display: none;
+}
+
 .topnav .search-container button:hover {
   background: #ccc;
 }
 
 .search-box {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .search-words {
-  background-color: blanchedalmond;
+  background-color: white;
   /* width: 100%; */
-  display: flex;
+  /* display: flex; */
 }
 
 /* main container */
@@ -207,9 +368,10 @@ a:is(:link, :active, :visited).active {
 .editor-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.btn-gr1 .fa {
+/* .btn-gr1 .fa {
   background-color: white;
   box-shadow: 5px 5px 16px 0px #948e8e;
   cursor: pointer;
@@ -223,7 +385,7 @@ a:is(:link, :active, :visited).active {
   cursor: pointer;
   width: 50px;
   height: 50px;
-}
+} */
 
 .file-input {
   background-color: white;
@@ -245,15 +407,15 @@ a:is(:link, :active, :visited).active {
   box-shadow: 5px 5px 16px 0px #948e8e;
 }
 
-.editors {
-  width: 450px;
-  height: 450px;
+/* .editors {
+  width: 250px;
+  height: 250px;
   box-shadow: 5px 5px 16px 0px #948e8e;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr) 100px 1fr;
   gap: 15px;
-}
+} */
 
 .userTxt {
   grid-column: 1/5;
@@ -318,11 +480,11 @@ a:is(:link, :active, :visited).active {
   gap: 5px;
 }
 
-.save-btns button {
+/* .save-btns button {
   width: 140px;
   height: 50px;
   padding: 5px;
-}
+} */
 
 .share-container a {
   text-decoration: none;
@@ -352,10 +514,11 @@ p a {
 .footer {
   padding-top: 10px;
   width: auto;
-  height: 200px;
-  background-color: orange;
+  /* height: 200px; */
+  background-color: rgb(255, 166, 0);
   font-size: 20px;
   text-align: center;
+  margin-bottom: 0px;
 }
 
 /* contact-html */
@@ -376,7 +539,6 @@ p a {
 }
 
 .about-img {
-  /* border-radius: 10px; */
   grid-row: 2/4;
   grid-column: 2/4;
 }
@@ -396,6 +558,12 @@ p a {
 
 .creator-name {
   font-weight: bold;
+}
+
+/* saved-meme */
+
+.save-meme-container {
+  height: 400px;
 }
 
 /* HELPERS */
@@ -426,8 +594,4 @@ p a {
 
 .text-reverse {
   flex-direction: row-reverse;
-}
-
-.topnav .icon {
-  display: none;
 }
