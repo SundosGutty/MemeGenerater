@@ -57,21 +57,21 @@
     </section> -->
 
 
-    <section class="editor-container main-layout">
+    <section class="editor-container main-layout hidden">
         <div class="canvas-container hidden flex">
             <canvas id="meme-canvas" height="450" width="450">
             </canvas>
         </div>
         <div class="canvas-editors hidden">
             <div class="editors main-layout">
-                <input class="userTxt" type="text" id="text" placeholder="Go wild!" oninput="onsendInput(this)">
+                <input class="userTxt" type="text" id="text" placeholder="Go wild!" oninput="onsendInput(this.value)">
                 <button class="fa fa-upload" onclick="onDisplayInputFile()">
                     <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
                 </button>
                 <div class="btn-gr1">
-                    <button value="UP" onclick="onMoveFocus(value)" class="fa fa-arrow-up"></button>
-                    <button value="DOWN" onclick="onMoveFocus(value)" class="fa fa-arrow-down"></button>
-                    <button onclick="onSwitchLines()" class="fa fa-exchange"></button>
+                    <button value="UP" onclick="" class="fa fa-arrow-up"></button>
+                    <button value="DOWN" onclick="" class="fa fa-arrow-down"></button>
+                    <button onclick="onSwitchFocus()" class="fa fa-exchange"></button>
                     <button onclick="onAddLine()" class="fa fa-plus"></button>
                     <button onclick="onRemoveText()" class="fa fa-trash"></button>
                 </div>
@@ -87,11 +87,11 @@
                         <option>Verdana</option>
                     </select>
                     <button class="fa fa-strikethrough">
-                        <input class="control-color-input" type="color" oninput="onChangeStokeColor(value)"
+                        <input class="control-color-input" type="color" oninput="onChangeOutlineColor(value)"
                             title="Choose Outline color">
                         <span></span></button>
                     <button class="fa palette"><input class="control-color-input" type="color"
-                            oninput="onChangeTextColor(value)" title="Choose color"
+                            oninput="onChangeFillColor(value)" title="Choose color"
                             data-trans="fill-color" /><span>🎨</span></button>
                 </div>
                 <div class="stikers-container">
@@ -119,6 +119,7 @@
 
     <script src="js/utilitis.js"></script>
     <script src="js/exp-inp.js"></script>
+    <script src="js/meme.controler.js"></script>
     <script src="js/controler.js"></script>
     <script src="js/services.js"></script>
 

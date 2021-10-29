@@ -1,8 +1,10 @@
 'use strict'
 
-var gMemes = []
-var gIdx = 0
-var gKeywords = {
+gCanvas.width = 450
+gCanvas.height = 450
+
+
+let gKeywords = {
     'happy': 12,
     'funny': 1,
     'celebrity': 7,
@@ -24,7 +26,7 @@ var gKeywords = {
 }
 
 
-var gImages = [
+let gImages = [
     {
         id: 1,
         url: 'meme-imgs (square)/1.jpg',
@@ -120,19 +122,20 @@ var gImages = [
 
 
 
-var gMeme = {
+let gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'Challenge your inner commedian!',
-            font: 'IMPACT',
+            txt: '',
+            font: 'Impact',
             size: 26,
             align: 'center',
             innerColor: 'white',
             strColor: 'black',
             positionX: gCanvas.width / 2,
             positionY: 30,
+            id: getRandomeId()
         },
         // {
         //     txt: 'Try more!',
@@ -147,32 +150,57 @@ var gMeme = {
 
 }
 
+function getLineIdxById(id) {
+    return gMeme.lines.findIndex(function (line) {
+        return line.id === id
+    })
+}
+
+
+function switchFocus() {
+    if (gMeme.lines.length === 0) return
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx++
+}
+
+
 function addLine() {
-    var line = {
-        txt: 'Add new text here',
+    let line = {
+        txt: '',
         size: 40,
         align: 'center',
         font: 'impact',
         innerColor: 'black',
         strColor: 'white',
         positionX: 225,
-        positionY: 225
+        positionY: 225,
+        id: getRandomeId()
     }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx++
 }
 
-function editMeme(key, value) {
-    if (gMeme.lines.length === 0) return
+
+function changeOutlineColor(color){
     const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx][key] = value
+    gMeme.lines[lineIdx].strColor = color
+
 }
 
 
+function changeFillColor(color){
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].innerColor = color
 
+}
+
+
+//changes the global font
 function changeFont(font) {
     gFont = font
 }
+
+
 
 function getLineIdx() {
     return gMeme.selectedLineIdx
@@ -183,7 +211,7 @@ function getMemeText(lineIdx) {
     return gMeme.lines[lineIdx].txt
 }
 
-
+//font size
 function changeSize(num) {
     if (gMeme.lines.length === 0) return
     const lineIdx = gMeme.selectedLineIdx
@@ -208,37 +236,21 @@ function removeLine() {
 }
 
 
-function setStroke(color) {
-    console.log(color)
+//the txt input
+function sendInput(userTxt) {
     const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx].strColor = color
-}
-
-function setTxtColor(color) {
-    const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx].innerColor = color
+    gMeme.lines[lineIdx].txt = userTxt
 }
 
 
-function returnIdx() {
-    return gIdx
-}
-
-
-function setLine() {
-    gIdx++
-    console.log(gIdx)
-}
-
-
-function getMemeUrl() {
-    var idx = getImgId()
+function getImgUrl() {
+    const idx = getImgId()
     return gImages[idx].url
 }
 
 
 function getImgId() {
-    var imgIdx = gImages.findIndex((img) => img.id == gMeme.selectedImgId)
+    const imgIdx = gImages.findIndex((img) => img.id == gMeme.selectedImgId)
     return imgIdx
 }
 
@@ -249,7 +261,6 @@ function getCurrImgId() {
 
 
 function getSelectedImg(id) {
-    console.log(id)
     gMeme.selectedImgId = id
 }
 
