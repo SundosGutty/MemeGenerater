@@ -19,13 +19,13 @@
         </div>
         <nav class="navbar topnav flex">
             <ul class="main-nav flex clean-list  space-between align-center">
-                <li><a data-trans="galery" href="index.html">Galery</a></li>
-                <li><a data-trans="memes" href="memes.html">Memes</a></li>
-                <li><a data-trans="about" href="about.html">About</a></li>
+                <li><a onclick="onMoveToGalery()" data-trans="galery">Galery</a></li>
+                <li><a onclick="onMoveToMemePage()" data-trans="memes">Memes</a></li>
+                <li><a onclick="onMoveToAboutPage()" data-trans="about">About</a></li>
                 <li data-trans="language" class="dropdown">Language<span class="fa fa-angle-double-down"></span>
                     <ul class="dropbtn dropdown-content clean-list ">
-                        <li><a onclick="onSetLang('en')">English</a></li>
-                        <li><a onclick="onSetLang('he')">עברית</a></li>
+                        <li><a data-trans="english" onclick="onSetLang('en')">English</a></li>
+                        <li><a data-trans="hebrew" onclick="onSetLang('he')">עברית</a></li>
                     </ul>
                 </li>
             </ul>
@@ -86,8 +86,8 @@
                         <option data-trans="font3">Verdana</option>
                     </select>
                     <button class="fa fa-strikethrough">
-                        <input class="control-color-input" type="color"
-                            oninput="onChangeOutlineColor(value)" title="Choose Outline color">
+                        <input class="control-color-input" type="color" oninput="onChangeOutlineColor(value)"
+                            title="Choose Outline color">
                         <span></span></button>
                     <button class="fa palette"><span>🎨</span><input class="control-color-input" type="color"
                             oninput="onChangeFillColor(value)" title="Choose color" /></button>
@@ -106,11 +106,68 @@
         </div>
     </section>
 
+
+    <section class="about-page hidden">
+        <main class="about-container flex">
+            <img class="about-img" src="aboutImg/my-img (12).jpg" alt="">
+            <div class="about-me">
+                <p data-trans="about-me" class="about-txt">Hello, my name is <span class="creator-name">Sundos
+                        Gutty</span>.
+                    I'm a Full Stack Web Developer student, with experience in writing single-page-applications
+                    using
+                    the
+                    latest
+                    WEB
+                    technologies such as JavaScript (ES6, ES5). Hard worker, self-learner, team player with
+                    strong
+                    communication
+                    skills.
+                </p>
+                <section class="by-socials">
+                    <p data-trans="contact"> You can contact me through:</p>
+                    <ul class="flex clean-list">
+                        <li> <a href="https://www.facebook.com/soundos.goutti" target="_blank">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/sundos-guty-0382a71b4" target="_blank">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/SundosGutty" target="_blank">
+                                <i class="fa fa-github"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/sundosguty?utm_medium=copy_link" target="_blank">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </section>
+            </div>
+        </main>
+    </section>
+
+
+    <section class="save-meme-container hidden">
+        <h1  data-trans="edited-memes" class="edited-memes">Your Edited Memes</h1>
+    </section>
+
+
+
     <footer class="footer">
         <h4 class="logo">MemeGenerator</h4>
-        <p data-trans="presented-by">Presented By <a href="about.html">Sundos Guty</a></p>
+        <p data-trans="presented-by">Presented By <a class="creator-name" onclick="onMoveToAboutPage()">Sundos Guty</a></p>
         <p data-trans="copyrights">&copy; Copyright 2021, All Right Reserved</p>
     </footer>
+
+
+
+
 
 
 

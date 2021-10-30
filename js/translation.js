@@ -27,17 +27,12 @@ var gTrans = {
         en: '&copy; Copyright 2021, All Right Reserved',
         he: ' 2021 כל הזכויות שמורות ©',
     },
-    font: {
-        en: '',
-        he: ''
-    },
     'about-me': {
         en: `Hello, my name is Sundos Gutty.I'm a Full Stack Web Developer student, with experience in writing single-page-applicationsusing
         the latest WEB technologies such as JavaScript (ES6, ES5). Hard worker, self-learner, team player with
         strong communication skills.`,
-        he: ` שלום, שמי סונדוס גוטי. אני סטודנט למפתחי אינטרנט ב-Full Stack, עם ניסיון בכתיבת יישומים של עמוד בודד
-        טכנולוגיות ה-WEB העדכניות ביותר כגון JavaScript (ES6, ES5). עובד קשה, לומד את עצמו, שחקן צוות עם
-        כישורי תקשורת חזקים`
+        he: ` שלום, שמי סונדוס גוטי. אני סטודנטית לפיתוח אפליקציות ואתרים ב-Full Stack, עם ניסיון בכתיבת יישומים של עמוד בודד בעזרת 
+        טכנולוגיות ה-WEB העדכניות ביותר כגון  (ES6, ES5). `
     },
     contact: {
         en: `You can contact me through:`,
@@ -87,9 +82,21 @@ var gTrans = {
         en: 'sarcasm',
         he: 'סרקזם'
     },
-    inputSearch : {
+    inputSearch: {
         en: 'Search a category....',
         he: 'חפש לפי קטגוריה'
+    },
+    english:{
+        en: 'English',
+        he: 'אנגלית'
+    },
+    hebrew:{
+        en: 'hebrew',
+        he: 'עברית'
+    },
+    'edited-memes':{
+        en: 'Your Edited Memes',
+        he: 'הממים השמורים שלך'
     }
 
 }
@@ -114,7 +121,7 @@ function doTrans() {
         var elTrans = el.dataset.trans
         el.innerText = getTrans(elTrans)
     })
- 
+
 }
 
 function getLang() {

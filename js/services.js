@@ -210,7 +210,7 @@ let gMeme = {
             innerColor: 'white',
             strColor: 'black',
             positionX: 225,
-            positionY: 400,
+            positionY: 380,
             id: getRandomeId()
         }
     ]
@@ -374,19 +374,6 @@ function getImgs() {
 }
 
 //upload & download
-function loadImageFromInput(ev, onImageReady) {
-    document.querySelector('.file-input').innerHTML = ''
-    var reader = new FileReader()
-
-    reader.onload = function (event) {
-        var img = new Image()
-        img.onload = onImageReady.bind(null, img)
-        img.src = event.target.result
-        gImg = img
-    }
-    reader.readAsDataURL(ev.target.files[0])
-}
-
 
 function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);

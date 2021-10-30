@@ -9,6 +9,7 @@ function onInit() {
     renderStickers()
 }
 
+
 function renderGallery() {
     const images = getImgs()
 
@@ -21,19 +22,51 @@ function renderGallery() {
 }
 
 
+function onMoveToGalery() {
+    document.querySelector('.about-page').classList.add('hidden')
+    document.querySelector('.search-sec').style.display = 'flex'
+    document.querySelector('.img-container').style.display = 'grid'
+    document.querySelector('.save-meme-container').classList.add('hidden')
+}
+
+
+function onMoveToAboutPage() {
+    document.querySelector('.search-sec').style.display = 'none'
+    document.querySelector('.img-container').style.display = 'none'
+    document.querySelector('.editor-container').style.display = 'none'
+    document.querySelector('.about-page').classList.remove('hidden')
+    document.querySelector('.save-meme-container').classList.add('hidden')
+
+}
+
+
+function onMoveToMemePage() {
+    document.querySelector('.search-sec').style.display = 'none'
+    document.querySelector('.img-container').style.display = 'none'
+    document.querySelector('.editor-container').style.display = 'none'
+    document.querySelector('.about-page').classList.add('hidden')
+    document.querySelector('.save-meme-container').classList.remove('hidden')
+
+}
+
+
 
 function renderStickers() {
     const stikers = getStickers()
     console.log(stikers)
     let stickerHtml = stikers.map(function (sticker) {
         return `
-        <img class="sticker-image" src="${sticker.url}" id="${sticker.id}" onclick="onCenterSticker('${sticker.id}')">
+        <img class="sticker-image" src="${sticker.url}" id="${sticker.id}" onclick="onOpenModal()">
        `
     })
     document.querySelector('.stickers-container').innerHTML = stickerHtml.join('')
 }
 
+function onOpenModal() {
 
+}
+
+//need to fix
 function onCenterSticker(stickerId) {
     var stickers = getStickers()
     var sticker = stickers[stickerId - 1]
@@ -69,19 +102,12 @@ const navLinks = document.querySelectorAll('.navbar a').forEach(link => {
 })
 
 
-//TO DO - SET-lANG
+
 function onSetLang(lang) {
     setLang(lang)
-    const elBody = document.querySelector('body')
-    if (lang === 'he') {
-        elBody.classList.add('rtl')
-    }
-    if (lang === 'en') {
-        elBody.classList.remove('rtl')
-        return
-    }
+    if (lang === 'he') document.body.classList.add('rtl')
+    else document.body.classList.remove('rtl')
     doTrans()
-    renderCanvas()
 }
 
 
@@ -125,7 +151,6 @@ function renderKeyWords() {
         btnHtml += `<button data-trans=${keyWord.category} class="filter-btn" style="font-size: ${keyWord.fontSize + 10}px;" onclick="onclickFilter(this.innerHTML)">${keyWord.category}</button>`
     })
     document.querySelector('.search-words').innerHTML = btnHtml
-    // doTrans()
 }
 
 

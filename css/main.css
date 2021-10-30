@@ -29,7 +29,6 @@ body.rtl {
 }
 
 /* My navbar */
-
 /* full nav-bar */
 
 .logo {
@@ -93,6 +92,11 @@ a:is(:link, :active, :visited).active {
   cursor: pointer;
 }
 
+.creator-name{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .dropdown:hover .dropdown-content {
   display: block;
   background-color: wheat;
@@ -132,7 +136,7 @@ a:is(:link, :active, :visited).active {
 
 }
 
-@media (max-width: 800px) {
+@media (max-width: 820px) {
   .editors {
     width: 300px;
     height: 300px;
@@ -141,10 +145,7 @@ a:is(:link, :active, :visited).active {
     align-items: center;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr) 1fr 1fr;
-    /* gap: 20px; */
-    /* gap: 15px; */
     margin-right: 35px;
-    /* padding-right: 40px; */
     margin-top: 5px;
   }
   .btn-gr1 {
@@ -192,14 +193,26 @@ a:is(:link, :active, :visited).active {
     height: 50px;
     padding: 5px;
     cursor: pointer;
-    /* border: black 1px solid; */
     color: black;
     box-shadow: 5px 5px 16px 0px #948e8e;
     text-align: center;
     padding-top: 15px;
     border-radius: 5px;
   }
+  .about-img{
+    width: 300px;
+    height: 300px;
+  }
+
 }
+
+.img-container {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
+}
+
+
 
 @media (min-width: 820px) {
   .editors {
@@ -210,6 +223,10 @@ a:is(:link, :active, :visited).active {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr) 50px 1fr;
     gap: 5px;
+  }
+  .about-img{
+    width: 400px;
+    height: 400px;
   }
   .userTxt {
     grid-column: 1/6;
@@ -225,7 +242,6 @@ a:is(:link, :active, :visited).active {
     grid-row: 2/3;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
-    /* padding: 5px; */
     gap: 1px;
     margin: 0;
     border-radius: 5px;
@@ -256,7 +272,6 @@ a:is(:link, :active, :visited).active {
   .stickers-container {
     grid-column: 1/6;
     grid-row: 5/6;
-    /* padding-top: 20px; */
     padding-left: 30px;
   }
   .save-btns {
@@ -300,11 +315,21 @@ a:is(:link, :active, :visited).active {
     padding-top: 50px;
     padding-bottom: 50px;
   }
+  .img-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
+  }
 }
 
 @media (max-width: 650px) {
+  .img-container {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
+  }
   .about-txt {
-    line-height: 35px;
+    line-height: 10px;
     padding-bottom: 35px;
   }
   .main-nav {
@@ -314,8 +339,7 @@ a:is(:link, :active, :visited).active {
     height: 50vh;
     flex-direction: column;
     background-color: rgb(255, 166, 0);
-    /* width: 100px; */
-    transform: translateX(100%);
+     transform: translateX(100%);
     transition: .5s ease-in-out;
     size: 10px;
   }
@@ -338,11 +362,9 @@ a:is(:link, :active, :visited).active {
     align-items: center;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr) 1fr 1fr;
-    /* gap: 20px; */
-    /* gap: 15px; */
     margin-right: 35px;
-    /* padding-right: 40px; */
     margin-top: 5px;
+    gap: 15px;
   }
   .btn-gr1 {
     display: grid;
@@ -350,16 +372,17 @@ a:is(:link, :active, :visited).active {
     grid-row: 2/3;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
-    padding: 5px;
+    /* padding: 5px; */
+  
   }
   .btn-gr2 {
     display: grid;
     grid-column: 1/6;
-    grid-row: 3/5;
+    grid-row: 3/4;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr 1fr;
     padding: 5px;
-    gap: 5px;
+    /* gap: 5px; */
   }
   .btn-gr1 .fa {
     background-color: white;
@@ -378,7 +401,7 @@ a:is(:link, :active, :visited).active {
     border: none;
   }
   .save-btns button {
-    width: 40px;
+    width: 80px;
     height: 30px;
     padding: 5px;
     border: none;
@@ -398,16 +421,18 @@ a:is(:link, :active, :visited).active {
   .about-img {
     padding-right: 50px;
   }
+
+  .about-txt{
+    line-height: 2px;
+  }
   .editor-container {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding-right: 30px;
   }
-  .inputfile+label {
-    width: 30px;
-    height: 30px;
-  }
+ 
   .control-color-input {
     width: 25px;
     height: 10px;
@@ -416,16 +441,20 @@ a:is(:link, :active, :visited).active {
   .a-btn {
     text-decoration: none;
     margin-top: 30px;
-    width: 35px;
+    width: 80px;
     height: 30px;
     padding: 5px;
     cursor: pointer;
     color: black;
     box-shadow: 5px 5px 16px 0px #948e8e;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 5px;
     border-radius: 5px;
   }
+  .main-layout{
+  margin-right: 10px;
+  }
+  
 }
 
 /* Search-area */
@@ -495,11 +524,11 @@ textarea, input {
 
 /* img container */
 
-.img-container {
+/* .img-container {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
-}
+} */
 
 .img-container img {
   cursor: pointer;
@@ -525,24 +554,6 @@ textarea, input {
   overflow: hidden;
   margin-top: 10px;
   align-items: center;
-}
-
-.fa-upload {
-  color: black;
-  padding-top: 10px;
-}
-
-.inputfile+label {
-  display: inline-block;
-  justify-self: center;
-  width: 60px;
-  height: 60px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 5px 5px 16px 0px #948e8e;
-  cursor: pointer;
-  padding: 12px 1px;
-  text-align: center;
 }
 
 .file-input {
@@ -592,7 +603,7 @@ textarea, input {
   grid-column: 1/6;
   grid-row: 3/5;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 30px;
   padding: 5px;
   gap: 5px;
   border-radius: 5px;
@@ -718,7 +729,12 @@ p a {
 /* saved-meme */
 
 .save-meme-container {
-  height: 400px;
+  height: 420px;
+}
+
+.edited-memes{
+  color: black;
+  text-align: center;
 }
 
 /* HELPERS */
