@@ -1,9 +1,7 @@
 'use strict'
 
-let gFont = 'Impact'
 var gCanvas = document.querySelector('#meme-canvas')
 var gCtx = gCanvas.getContext('2d')
-var CurrLine
 
 
 function onCreateMeme(imgId) {
@@ -38,13 +36,13 @@ function onAlignText(pos) {
     renderCanvas()
 }
 
-function onMoveLineUp(num){
+function onMoveLineUp(num) {
     moveLineUp(num)
     renderCanvas()
 }
 
 
-function onMoveLineDown(num){
+function onMoveLineDown(num) {
     moveLineDown(num)
     renderCanvas()
 }
@@ -54,7 +52,7 @@ function renderImg(img) {
 }
 
 function renderCanvas() {
-    var img = new Image()
+    const img = new Image()
     img.src = getImgUrl()
     img.onload = function () {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
@@ -64,10 +62,10 @@ function renderCanvas() {
 
 
 function renderText() {
-    var meme = getMeme()
-    var idx = getLineIdx()
-    var currLine = meme.lines[idx]
-    var lines = meme.lines
+    const meme = getMeme()
+    const idx = getLineIdx()
+    const currLine = meme.lines[idx]
+    const lines = meme.lines
     if (lines.length === 0) return
     meme.lines.forEach(line => drawText(line))
     document.querySelector('.userTxt').value = currLine.txt
@@ -78,6 +76,7 @@ function drawRect(x, y, size) {
     gCtx.beginPath()
     gCtx.rect(10, y - size, gCanvas.width - 20, size + 10)
     gCtx.strokeStyle = 'black'
+    gCtx.setLineDash([6, 2])
     gCtx.stroke()
 }
 
@@ -88,16 +87,16 @@ function onSwitchFocus() {
 }
 
 function drawText(currLine) {
-    gCtx.lineWidth = 1
-    gCtx.fillStyle = currLine.innerColor
-    gCtx.font = `${currLine.size}px ${gFont}`
+    gCtx.lineWidth = 2
+    gCtx.font = `${currLine.size}px ${currLine.font}`
     gCtx.textAlign = currLine.align
     gCtx.strokeStyle = currLine.strColor
+    gCtx.fillStyle = currLine.innerColor
     gCtx.save()
-    var positionX = currLine.positionX
-    var positionY = currLine.positionY
+    const positionX = currLine.positionX
+    const positionY = currLine.positionY
 
-    var idx = getLineIdxById(currLine.id)
+    const idx = getLineIdxById(currLine.id)
     if (currLine.txt && idx === gMeme.selectedLineIdx) {
         drawRect(positionX, positionY, currLine.size)
     }

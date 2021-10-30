@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -17,17 +16,17 @@
         <header class="navbar flex space-between">
             <div class="logo">
                 <h1 class="heading">Memegenerator</h1>
-                <h4 class="sub-heading">Your Meme Stock</h4>
+                <h5 class="sub-heading">Your Meme Stock</h5>
             </div>
             <nav class="navbar topnav flex">
                 <ul class="main-nav flex clean-list  space-between align-center">
-                    <li><a href="index.html">Galery</a></li>
-                    <li><a href="memes.html">Memes</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">Language<span class="fa fa-angle-double-down"></span>
+                    <li><a data-trans="galery" href="index.html">Galery</a></li>
+                    <li><a data-trans="memes" href="memes.html">Memes</a></li>
+                    <li><a data-trans="about" href="about.html">About</a></li>
+                    <li data-trans="language" class="dropdown">Language<span class="fa fa-angle-double-down"></span>
                         <ul class="dropbtn dropdown-content clean-list ">
-                            <li><a onclick="onSetLang('EN')">English</a></li>
-                            <li><a onclick="onSetLang('HE')">Hebrew</a></li>
+                            <li><a onclick="onSetLang('en')">English</a></li>
+                            <li><a onclick="onSetLang('he')">עברית</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -37,7 +36,7 @@
 
         <section class="save-meme-container">
 
-            <h1>Your Edited Memes</h1>
+            <h1 class="edited-memes">Your Edited Memes</h1>
         </section>
 
         <footer class="footer">
@@ -55,12 +54,11 @@
                 }
             })
 
-
             function toggleMenu() {
                 document.body.classList.toggle('menu-open')
             }
         </script>
-
+        <script src="js/translation.js"></script>
     </body>
 
 </html>

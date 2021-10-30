@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -20,13 +19,13 @@
         </div>
         <nav class="navbar topnav flex">
             <ul class="main-nav flex clean-list  space-between align-center">
-                <li><a href="index.html">Galery</a></li>
-                <li><a href="memes.html">Memes</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">Language<span class="fa fa-angle-double-down"></span>
+                <li><a data-trans="galery" href="index.html">Galery</a></li>
+                <li><a data-trans="memes" href="memes.html">Memes</a></li>
+                <li><a data-trans="about" href="about.html">About</a></li>
+                <li data-trans="language" class="dropdown">Language<span class="fa fa-angle-double-down"></span>
                     <ul class="dropbtn dropdown-content clean-list ">
-                        <li><a onclick="onSetLang('EN')">English</a></li>
-                        <li><a onclick="onSetLang('HE')">Hebrew</a></li>
+                        <li><a onclick="onSetLang('en')">English</a></li>
+                        <li><a onclick="onSetLang('he')">עברית</a></li>
                     </ul>
                 </li>
             </ul>
@@ -37,21 +36,19 @@
 
     <section class="search-sec main-layout">
         <div class="search-box">
-            <input class="input-bar" type="text" list="theme-search" placeholder="Search a category...."
-                onkeyup="onclickFilter(value)">
+            <input class="input-bar" type="text" list="theme-search" data-trans="inputSearch"
+                placeholder="Search a category...." onkeyup="onclickFilter(value)">
             <span class="fa fa-search"></span>
             <datalist id="theme-search">
-                <option value="funny">
-                <option value="animal">
-                <option value="bad">
-                <option value="awkward">
-                <option value="happy">
+                <option data-trans="funny" value="funny">
+                <option data-trans="animal" value="animal">
+                <option data-trans="bad" value="bad">
+                <option data-trans="awkward" value="awkward">
+                <option data-trans="happy" value="happy">
             </datalist>
         </div>
         <div class="search-words">
             <!-- Here are rendered The search Words -->
-            <section class="revealed-words"></section>
-            <section class="hidden-words"></section>
         </div>
     </section>
 
@@ -70,12 +67,6 @@
             <div class="editors main-layout">
                 <input class="userTxt" type="text" id="text" placeholder="  Challenge your inner comedian!"
                     oninput="onsendInput(this.value)">
-                <!-- <button class="fa fa-upload" onclick="onDisplayInputFile()">
-                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-                </button> -->
-                <!-- <button class="btn fa fa-upload" onclick="onImgInput(event)"></button> -->
-                <input type="file" class="file-input btn fa fa-upload" name="image" onchange="onImgInput(event)" />
-
                 <div class="btn-gr1">
                     <button value="UP" onclick="onMoveLineUp(4)" class="fa fa-arrow-up"></button>
                     <button value="DOWN" onclick="onMoveLineDown(-4)" class="fa fa-arrow-down"></button>
@@ -89,22 +80,21 @@
                     <button onclick="onAlignText('right')" class="fa fa-align-left "></button>
                     <button onclick="onAlignText('center')" class="fa fa-align-center "></button>
                     <button onclick="onAlignText('left')" class="fa  fa-align-right"></button>
-                    <select id="fonts" class="fonts-selection" onchange="onChangeFont(value)">
-                        <option>Impact</option>
-                        <option>Times New Roman</option>
-                        <option>Verdana</option>
+                    <select data-trans="font" id="fonts" class="fonts-selection" onchange="onChangeFont(value)">
+                        <option data-trans="font1">Impact</option>
+                        <option data-trans="font2">Times New Roman</option>
+                        <option data-trans="font3">Verdana</option>
                     </select>
                     <button class="fa fa-strikethrough">
-                        <input class="control-color-input" type="color" oninput="onChangeOutlineColor(value)"
-                            title="Choose Outline color">
+                        <input class="control-color-input" type="color"
+                            oninput="onChangeOutlineColor(value)" title="Choose Outline color">
                         <span></span></button>
                     <button class="fa palette"><span>🎨</span><input class="control-color-input" type="color"
                             oninput="onChangeFillColor(value)" title="Choose color" /></button>
                 </div>
 
-                <div class="stikers-container">
-                       
-                </div>
+                <section class="stickers-container">
+                </section>
                 <div class="save-btns">
                     <button onclick="shareToExternalSorce()" class="fc-btn share-container "><span
                             class="fa fa-facebook"></span></button>
@@ -116,17 +106,17 @@
         </div>
     </section>
 
-
-
     <footer class="footer">
         <h4 class="logo">MemeGenerator</h4>
-        <p>Presented By <a href="about.html">Sundos Guty</a></p>
-        <p>&copy; Copyright 2021, All Right Reserved</p>
+        <p data-trans="presented-by">Presented By <a href="about.html">Sundos Guty</a></p>
+        <p data-trans="copyrights">&copy; Copyright 2021, All Right Reserved</p>
     </footer>
 
 
+
     <script src="js/utilitis.js"></script>
-    <script src="js/exp-inp.js"></script>
+    <script src="js/translation.js"></script>
+    <script src="js/storage.js"></script>
     <script src="js/controler.js"></script>
     <script src="js/meme.controler.js"></script>
     <script src="js/services.js"></script>

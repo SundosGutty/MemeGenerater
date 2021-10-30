@@ -20,8 +20,12 @@ canvas {
 }
 
 .main-layout {
+  margin-right: 35px;
   margin-left: 35px;
-  margin-left: 35px;
+}
+
+body.rtl {
+  direction: rtl;
 }
 
 /* My navbar */
@@ -30,13 +34,13 @@ canvas {
 
 .logo {
   font-size: 15px;
-  padding-left: 15px;
+  padding-inline-start: 20px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .sub-heading {
   line-height: 0px;
-  padding-left: 40px;
+  padding-inline-start: 40px;
 }
 
 .navbar {
@@ -67,7 +71,7 @@ a:is(:link, :active, :visited).active {
 .dropdown {
   float: right;
   overflow: hidden;
-  padding-right: 30px;
+  padding-inline-end: 30px;
   cursor: pointer;
   text-align: center;
 }
@@ -95,7 +99,7 @@ a:is(:link, :active, :visited).active {
 }
 
 .dropdown .fa {
-  padding-left: 5px;
+  padding-inline-end: 5px;
 }
 
 /* hamburger nav-bar */
@@ -107,37 +111,41 @@ a:is(:link, :active, :visited).active {
   display: none;
 }
 
-@media (max-width: 920px) {
-  .editor-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .editors {
-    align-items: center;
-    padding-right: 45px;
-    width: 150px;
-    height: 150px;
-  }
+.about-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-@media (min-width: 820px) {
+.a-btn {
+  text-decoration: none;
+  margin-top: 30px;
+  width: 100px;
+  height: 30px;
+  padding: 5px;
+  cursor: pointer;
+  color: black;
+  box-shadow: 5px 5px 16px 0px #948e8e;
+  text-align: center;
+  /* padding-top: 15px; */
+  margin-left: 20px;
+  border-radius: 5px;
+
+}
+
+@media (max-width: 800px) {
   .editors {
-    width: 450px;
-    height: 450px;
+    width: 300px;
+    height: 300px;
     box-shadow: 5px 5px 16px 0px #948e8e;
     display: grid;
+    align-items: center;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr) 100px 1fr;
-    gap: 15px;
-  }
-  .userTxt {
-    grid-column: 1/5;
-    grid-row: 1/2;
-  }
-  .fa-upload {
-    grid-column: 5/6;
-    grid-row: 1/2;
+    grid-template-rows: repeat(4, 1fr) 1fr 1fr;
+    /* gap: 20px; */
+    /* gap: 15px; */
+    margin-right: 35px;
+    /* padding-right: 40px; */
+    margin-top: 5px;
   }
   .btn-gr1 {
     display: grid;
@@ -156,6 +164,83 @@ a:is(:link, :active, :visited).active {
     padding: 5px;
     gap: 5px;
   }
+  .btn-gr1 .fa {
+    background-color: white;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: none;
+  }
+  .btn-gr2 .fa {
+    background-color: white;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: none;
+  }
+  .save-btns button {
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+    border: none;
+  }
+  .a-btn {
+    text-decoration: none;
+    width: 130px;
+    height: 50px;
+    padding: 5px;
+    cursor: pointer;
+    /* border: black 1px solid; */
+    color: black;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    text-align: center;
+    padding-top: 15px;
+    border-radius: 5px;
+  }
+}
+
+@media (min-width: 820px) {
+  .editors {
+    width: 400px;
+    height: 400px;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr) 50px 1fr;
+    gap: 5px;
+  }
+  .userTxt {
+    grid-column: 1/6;
+    grid-row: 1/2;
+  }
+  .fa-upload {
+    grid-column: 5/6;
+    grid-row: 1/2;
+  }
+  .btn-gr1 {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 2/3;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    /* padding: 5px; */
+    gap: 1px;
+    margin: 0;
+    border-radius: 5px;
+  }
+  .btn-gr2 {
+    display: grid;
+    grid-column: 1/6;
+    grid-row: 3/5;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr;
+    padding: 5px;
+    gap: 5px;
+    border-radius: 5px;
+    border: none;
+  }
   .fonts-selection {
     grid-column: 1/4;
     grid-row: 4/5;
@@ -168,13 +253,11 @@ a:is(:link, :active, :visited).active {
     grid-column: 5/6;
     grid-row: 4/5;
   }
-  .stikers-container {
-    display: grid;
+  .stickers-container {
     grid-column: 1/6;
     grid-row: 5/6;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 30px;
-    border: 1px black solid;
+    /* padding-top: 20px; */
+    padding-left: 30px;
   }
   .save-btns {
     display: grid;
@@ -184,6 +267,8 @@ a:is(:link, :active, :visited).active {
     grid-template-rows: 1fr;
     padding: 5px;
     gap: 5px;
+    border-radius: 5px;
+    border: none;
   }
   .btn-gr1 .fa {
     background-color: white;
@@ -191,6 +276,8 @@ a:is(:link, :active, :visited).active {
     cursor: pointer;
     width: 50px;
     height: 50px;
+    border: none;
+    border-radius: 5px;
   }
   .btn-gr2 .fa {
     background-color: white;
@@ -198,15 +285,28 @@ a:is(:link, :active, :visited).active {
     cursor: pointer;
     width: 50px;
     height: 50px;
+    border: none;
+    border-radius: 5px;
   }
   .save-btns button {
-    width: 140px;
-    height: 50px;
-    padding: 5px;
+    width: 100px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 30px;
+  }
+  .about-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
 
 @media (max-width: 650px) {
+  .about-txt {
+    line-height: 35px;
+    padding-bottom: 35px;
+  }
   .main-nav {
     position: fixed;
     top: 75px;
@@ -238,9 +338,11 @@ a:is(:link, :active, :visited).active {
     align-items: center;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr) 1fr 1fr;
-    gap: 15px;
-    /* margin-right: 35px; */
+    /* gap: 20px; */
+    /* gap: 15px; */
+    margin-right: 35px;
     /* padding-right: 40px; */
+    margin-top: 5px;
   }
   .btn-gr1 {
     display: grid;
@@ -265,6 +367,7 @@ a:is(:link, :active, :visited).active {
     cursor: pointer;
     width: 30px;
     height: 30px;
+    border: none;
   }
   .btn-gr2 .fa {
     background-color: white;
@@ -272,14 +375,56 @@ a:is(:link, :active, :visited).active {
     cursor: pointer;
     width: 30px;
     height: 30px;
+    border: none;
   }
   .save-btns button {
     width: 40px;
     height: 30px;
     padding: 5px;
+    border: none;
+    margin-top: 30px;
   }
   .canvas-container {
     margin-right: 10px;
+  }
+  .about-container {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .about-img {
+    padding-right: 50px;
+  }
+  .editor-container {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .inputfile+label {
+    width: 30px;
+    height: 30px;
+  }
+  .control-color-input {
+    width: 25px;
+    height: 10px;
+    border: none;
+  }
+  .a-btn {
+    text-decoration: none;
+    margin-top: 30px;
+    width: 35px;
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+    color: black;
+    box-shadow: 5px 5px 16px 0px #948e8e;
+    text-align: center;
+    padding-top: 15px;
+    border-radius: 5px;
   }
 }
 
@@ -291,7 +436,6 @@ a:is(:link, :active, :visited).active {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .search-sec .fa {
@@ -311,13 +455,13 @@ textarea, input {
   outline: none;
 }
 
-.filter-btn{
+.filter-btn {
   background-color: white;
   border: none;
   cursor: pointer;
 }
 
-.filter-btn:hover{
+.filter-btn:hover {
   color: rgb(255, 166, 0);
 }
 
@@ -345,8 +489,6 @@ textarea, input {
 
 .search-words {
   background-color: white;
-  /* width: 100%; */
-  /* display: flex; */
 }
 
 /* main container */
@@ -366,38 +508,55 @@ textarea, input {
 /* editor-container */
 
 .editor-container {
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* .btn-gr1 .fa {
-  background-color: white;
-  box-shadow: 5px 5px 16px 0px #948e8e;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
+.control-color-input {
+  width: 35px;
+  height: 20px;
+  border: none;
 }
 
-.btn-gr2 .fa {
-  background-color: white;
+.inputfile, .inputcolor {
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.fa-upload {
+  color: black;
+  padding-top: 10px;
+}
+
+.inputfile+label {
+  display: inline-block;
+  justify-self: center;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 12px;
   box-shadow: 5px 5px 16px 0px #948e8e;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
-} */
+  padding: 12px 1px;
+  text-align: center;
+}
 
 .file-input {
   background-color: white;
   border: 1px solid;
   box-shadow: 5px 5px 16px 0px #948e8e;
   cursor: pointer;
-  /* display: none; */
+  grid-column: 5/6;
+  grid-row: 1/2;
+
 }
 
 .editor-container button {
   background-color: white;
-  border: 1px solid;
   box-shadow: 5px 5px 16px 0px #948e8e;
   cursor: pointer;
 }
@@ -407,24 +566,15 @@ textarea, input {
   box-shadow: 5px 5px 16px 0px #948e8e;
 }
 
-/* .editors {
-  width: 250px;
-  height: 250px;
-  box-shadow: 5px 5px 16px 0px #948e8e;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr) 100px 1fr;
-  gap: 15px;
-} */
-
 .userTxt {
-  grid-column: 1/5;
+  grid-column: 1/6;
   grid-row: 1/2;
 }
 
 .fa-upload {
   grid-column: 5/6;
   grid-row: 1/2;
+  border: none;
 }
 
 .btn-gr1 {
@@ -434,6 +584,7 @@ textarea, input {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
   padding: 5px;
+  border-radius: 5px;
 }
 
 .btn-gr2 {
@@ -444,6 +595,7 @@ textarea, input {
   grid-template-rows: 1fr 1fr;
   padding: 5px;
   gap: 5px;
+  border-radius: 5px;
 }
 
 .fonts-selection {
@@ -454,6 +606,7 @@ textarea, input {
 .fa-strikethrough {
   grid-column: 4/5;
   grid-row: 4/5;
+  border: none;
 }
 
 .palette {
@@ -461,13 +614,14 @@ textarea, input {
   grid-row: 4/5;
 }
 
-.stikers-container {
+.stickers-container {
   display: grid;
   grid-column: 1/6;
   grid-row: 5/6;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 30px;
-  border: 1px black solid;
+  grid-template-rows: 10px;
+  /* border: 1px black solid; */
+  border-radius: 2px;
 }
 
 .save-btns {
@@ -478,13 +632,10 @@ textarea, input {
   grid-template-rows: 1fr;
   padding: 5px;
   gap: 5px;
+  border-radius: 2px;
+  border: none;
 }
 
-/* .save-btns button {
-  width: 140px;
-  height: 50px;
-  padding: 5px;
-} */
 
 .share-container a {
   text-decoration: none;
@@ -492,17 +643,25 @@ textarea, input {
   color: black;
 }
 
-.a-btn {
-  text-decoration: none;
-  width: 140px;
-  height: 50px;
-  padding: 5px;
-  cursor: pointer;
-  border: black 1px solid;
+
+::placeholder {
   color: black;
-  box-shadow: 5px 5px 16px 0px #948e8e;
   text-align: center;
-  padding-top: 15px;
+}
+
+.userTxt {
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  box-shadow: 5px 5px 16px 0px #948e8e;
+  border: none;
+  border-radius: 2px;
+}
+
+.fonts-selection {
+  box-shadow: 5px 5px 16px 0px #948e8e;
+  border: none;
+  border-radius: 2px;
 }
 
 /* footer */
@@ -514,7 +673,7 @@ p a {
 .footer {
   padding-top: 10px;
   width: auto;
-  /* height: 200px; */
+  height: 200px;
   background-color: rgb(255, 166, 0);
   font-size: 20px;
   text-align: center;
@@ -532,15 +691,11 @@ p a {
 }
 
 .about-container {
-  display: grid;
-  grid-template-columns: repeat(6, 150px);
-  grid-template-rows: repeat(5, 100px);
   gap: 20px;
-}
-
-.about-img {
-  grid-row: 2/4;
-  grid-column: 2/4;
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-me {

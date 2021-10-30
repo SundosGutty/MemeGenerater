@@ -1,7 +1,8 @@
 'use strict'
-var gImg;
-gCanvas.width = 450
-gCanvas.height = 450
+var gImg
+gCanvas.width = 400
+gCanvas.height = 400
+
 
 let gKeywords = [
     {
@@ -133,6 +134,57 @@ let gImages = [
 ]
 
 
+let gStickers = [
+    {
+        id: 1,
+        url: 'stickers/1.png',
+        positionX: 200,
+        positionY: 200,
+        isDragging: false,
+        height: 12,
+        width: 75
+
+    },
+    {
+        id: 2,
+        url: 'stickers/2.png',
+        positionX: 200,
+        positionY: 200,
+        isDragging: false,
+        height: 12,
+        width: 85
+
+    },
+    {
+        id: 3,
+        url: 'stickers/3.png',
+        positionX: 200,
+        positionY: 200,
+        isDragging: false,
+        height: 12,
+        width: 85
+
+    },
+    {
+        id: 4,
+        url: 'stickers/4.png',
+        positionX: 200,
+        positionY: 200,
+        isDragging: false,
+        height: 12,
+        width: 85
+    },
+    {
+        id: 5,
+        url: 'stickers/5.png',
+        positionX: 200,
+        positionY: 200,
+        isDragging: false,
+        height: 12,
+        width: 85
+
+    }
+]
 
 
 let gMeme = {
@@ -164,6 +216,7 @@ let gMeme = {
     ]
 
 }
+
 
 
 //edit the canvas
@@ -200,14 +253,15 @@ function changeOutlineColor(color) {
 
 
 function changeFillColor(color) {
-    const lineIdx = gMeme.selectedLineIdx
+      const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].innerColor = color
 
 }
 
 
 function changeFont(font) {
-    gFont = font
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].font = font
 }
 
 
@@ -256,6 +310,10 @@ function modifyKeyWordSize(id) {
     gKeywords[id].fontSize += 1
 }
 
+
+
+
+
 //helpers
 function getImgUrl() {
     const idx = getImgId()
@@ -264,6 +322,11 @@ function getImgUrl() {
 
 function getLineIdx() {
     return gMeme.selectedLineIdx
+}
+
+
+function getStickers(){
+    return gStickers
 }
 
 function getKeyWords() {
@@ -310,7 +373,7 @@ function getImgs() {
     return gImages
 }
 
-//upload
+//upload & download
 function loadImageFromInput(ev, onImageReady) {
     document.querySelector('.file-input').innerHTML = ''
     var reader = new FileReader()
@@ -328,4 +391,27 @@ function loadImageFromInput(ev, onImageReady) {
 function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
+
+
+function doUploadImg(imgDataUrl, onSuccess) {
+
+    const formData = new FormData();
+    formData.append('img', imgDataUrl)
+
+    fetch('//ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(res => res.text())
+        .then((url) => {
+            console.log('Got back live url:', url);
+            onSuccess(url)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+}
+
+
+
 

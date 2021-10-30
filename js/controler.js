@@ -1,23 +1,17 @@
 'use strict'
 
-
-
 function onInit() {
     gCanvas = document.querySelector('#meme-canvas')
     gCtx = gCanvas.getContext('2d')
     renderGallery()
     renderCanvas()
     renderKeyWords()
+    renderStickers()
 }
-
-
-// function init(){
-
-// }
-
 
 function renderGallery() {
     const images = getImgs()
+
     let strHtmls = images.map(function (img) {
         return `  
         <img class="meme-image" src="${img.url}" id="${img.id}" onclick="onCreateMeme('${img.id}')">
@@ -26,6 +20,28 @@ function renderGallery() {
     document.querySelector('.img-container').innerHTML = strHtmls.join('')
 }
 
+
+
+function renderStickers() {
+    const stikers = getStickers()
+    console.log(stikers)
+    let stickerHtml = stikers.map(function (sticker) {
+        return `
+        <img class="sticker-image" src="${sticker.url}" id="${sticker.id}" onclick="onCenterSticker('${sticker.id}')">
+       `
+    })
+    document.querySelector('.stickers-container').innerHTML = stickerHtml.join('')
+}
+
+
+function onCenterSticker(stickerId) {
+    var stickers = getStickers()
+    var sticker = stickers[stickerId - 1]
+    var elSticker = document.querySelector(`${stickerId}`)
+    gCtx.drawImage(elSticker, sticker.positionX, sticker.positionY)
+    console.log('hello')
+
+}
 
 
 //delete the input once I click enter
@@ -44,8 +60,6 @@ function setPage() {
     document.querySelector('.editor-container ').style.display = 'flex'
 }
 
-
-
 //To keep track of the link we are on
 const activePage = window.location.pathname
 const navLinks = document.querySelectorAll('.navbar a').forEach(link => {
@@ -57,23 +71,19 @@ const navLinks = document.querySelectorAll('.navbar a').forEach(link => {
 
 //TO DO - SET-lANG
 function onSetLang(lang) {
-    if (lang === 'HE') console.log('he')
-    if (lang === 'EN') console.log('en')
-}
-
-//upload img
-//to fix
-function onImgInput(ev) {
-    clearCanvas()
-    loadImageFromInput(ev, renderImg)
-    gCtx.save()
+    setLang(lang)
+    const elBody = document.querySelector('body')
+    if (lang === 'he') {
+        elBody.classList.add('rtl')
+    }
+    if (lang === 'en') {
+        elBody.classList.remove('rtl')
+        return
+    }
+    doTrans()
     renderCanvas()
-    gCtx.restore()
 }
 
-function clearCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-}
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
@@ -84,8 +94,6 @@ function onDisplayInputFile() {
     document.querySelector('.file-input').style.display = 'block'
 }
 
-
-
 function onclickFilter(theme) {
     onFilterMemes(theme)
     renderKeyWords()
@@ -95,8 +103,8 @@ function onclickFilter(theme) {
 function onFilterMemes(theme) {
     let strHtml = ``
     const imgs = getImgs()
-    var keyWords = getKeyWords()
-    var keyWordIdx = getKeywordId(theme)
+    const keyWords = getKeyWords()
+    const keyWordIdx = getKeywordId(theme)
     if (keyWords[keyWordIdx].category === theme) modifyKeyWordSize(keyWordIdx)
     let newImgs = imgs.filter((img) => {
         const keyWords = img.keyWords
@@ -106,26 +114,42 @@ function onFilterMemes(theme) {
         strHtml += `<img class="meme-image" src="${img.url}" id="${img.id}" onclick="onCreateMeme('${img.id}')">`
     })
     document.querySelector('.img-container').innerHTML = strHtml
-    document.querySelector('.input-bar').value = ''
 }
 
 
 //render Keywords
 function renderKeyWords() {
-    var keyWords = getKeyWords()
-    var btnHtml = ''
-
+    const keyWords = getKeyWords()
+    let btnHtml = ''
     keyWords.map(function (keyWord) {
-        btnHtml += `<button class="filter-btn" style="font-size: ${keyWord.fontSize + 10}px;" onclick="onclickFilter(this.innerHTML)">${keyWord.category}</button>`
+        btnHtml += `<button data-trans=${keyWord.category} class="filter-btn" style="font-size: ${keyWord.fontSize + 10}px;" onclick="onclickFilter(this.innerHTML)">${keyWord.category}</button>`
     })
-
     document.querySelector('.search-words').innerHTML = btnHtml
-    var elBtn = document.querySelector('.filter-btn')
-
+    // doTrans()
 }
 
 
 
+//download canvas
+function downloadImg(elLink) {
+    var imgContent = gCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+
+
+//sahre to fc
+function shareToExternalSorce() {
+    const facebookIcon = document.querySelector('.fa-facebook').style.display = 'none'
+    const imgDataUrl = gCanvas.toDataURL("image/jpeg")
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        document.querySelector('.share-container').innerHTML = `
+        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+        Click to share 
+        </a>`
+    }
+    doUploadImg(imgDataUrl, onSuccess)
+}
 
 
 
