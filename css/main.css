@@ -53,6 +53,7 @@ body.rtl {
   padding: 14px 16px;
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
 a:is(:link, :active, :visited).active {
@@ -118,6 +119,8 @@ a:is(:link, :active, :visited).active {
 .about-container {
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .a-btn {
@@ -155,6 +158,9 @@ a:is(:link, :active, :visited).active {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
     padding: 5px;
+  }
+  a:is(:link, :active, :visited).active {
+    color: black;
   }
   .btn-gr2 {
     display: grid;
@@ -235,6 +241,9 @@ a:is(:link, :active, :visited).active {
   .fa-upload {
     grid-column: 5/6;
     grid-row: 1/2;
+  }
+  a:is(:link, :active, :visited).active {
+    color: black;
   }
   .btn-gr1 {
     display: grid;
@@ -332,6 +341,9 @@ a:is(:link, :active, :visited).active {
     line-height: 10px;
     padding-bottom: 35px;
   }
+  a:is(:link, :active, :visited).active {
+    color: black;
+  }
   .main-nav {
     position: fixed;
     top: 75px;
@@ -350,6 +362,7 @@ a:is(:link, :active, :visited).active {
     display: block;
     padding: 10px 16px;
     border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
   }
   .btn-menu {
     display: block;
@@ -418,10 +431,7 @@ a:is(:link, :active, :visited).active {
     margin-top: 30px;
     margin-bottom: 30px;
   }
-  .about-img {
-    padding-right: 50px;
-  }
-
+ 
   .about-txt{
     line-height: 2px;
   }
@@ -523,12 +533,6 @@ textarea, input {
 /* main container */
 
 /* img container */
-
-/* .img-container {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
-} */
 
 .img-container img {
   cursor: pointer;
@@ -765,4 +769,51 @@ p a {
 
 .text-reverse {
   flex-direction: row-reverse;
+}
+
+
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.modal-txt{
+  color: #000;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }

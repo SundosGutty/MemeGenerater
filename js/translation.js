@@ -97,8 +97,7 @@ var gTrans = {
     'edited-memes':{
         en: 'Your Edited Memes',
         he: 'הממים השמורים שלך'
-    }
-
+    },
 }
 
 

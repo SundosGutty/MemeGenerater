@@ -26,7 +26,9 @@ function onMoveToGalery() {
     document.querySelector('.about-page').classList.add('hidden')
     document.querySelector('.search-sec').style.display = 'flex'
     document.querySelector('.img-container').style.display = 'grid'
+    document.querySelector('.editor-container').style.display = 'none'
     document.querySelector('.save-meme-container').classList.add('hidden')
+    renderGallery()
 }
 
 
@@ -62,9 +64,25 @@ function renderStickers() {
     document.querySelector('.stickers-container').innerHTML = stickerHtml.join('')
 }
 
-function onOpenModal() {
 
+//opens a modal once a stiker is clicked
+function onOpenModal() {
+    var modal = document.getElementById('myModal')
+    modal.style.display = 'block'
+
+    var span = document.getElementsByClassName('close')[0]
+    span.onclick = function () {
+        modal.style.display = 'none'
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none'
+        }
+    }
 }
+
+
 
 //need to fix
 function onCenterSticker(stickerId) {
@@ -72,7 +90,6 @@ function onCenterSticker(stickerId) {
     var sticker = stickers[stickerId - 1]
     var elSticker = document.querySelector(`${stickerId}`)
     gCtx.drawImage(elSticker, sticker.positionX, sticker.positionY)
-    console.log('hello')
 
 }
 
@@ -93,9 +110,10 @@ function setPage() {
     document.querySelector('.editor-container ').style.display = 'flex'
 }
 
+//need to fix
 //To keep track of the link we are on
 const activePage = window.location.pathname
-const navLinks = document.querySelectorAll('.navbar a').forEach(link => {
+const navLinks = document.querySelectorAll('a').forEach(link => {
     if (link.href.includes(`${activePage}`)) {
         link.classList.add('active')
     }
@@ -175,7 +193,6 @@ function shareToExternalSorce() {
     }
     doUploadImg(imgDataUrl, onSuccess)
 }
-
 
 
 
