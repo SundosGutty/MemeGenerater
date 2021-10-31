@@ -53,11 +53,15 @@ function renderImg(img) {
 
 function renderCanvas() {
     const img = new Image()
+    const sticker = new Image()
+
+
     img.src = getImgUrl()
     img.onload = function () {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         renderText()
     }
+   
 }
 
 

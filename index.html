@@ -24,8 +24,8 @@
                 <li><a onclick="onMoveToAboutPage()" data-trans="about">About</a></li>
                 <li class="dropdown"><span class="fa fa-angle-double-down" data-trans="language">Language</span>
                     <ul class="dropbtn dropdown-content clean-list ">
-                        <li><a  onclick="onSetLang('en')">English</a></li>
-                        <li><a  onclick="onSetLang('he')">עברית</a></li>
+                        <li><a onclick="onSetLang('en')">English</a></li>
+                        <li><a onclick="onSetLang('he')">עברית</a></li>
                     </ul>
                 </li>
             </ul>
@@ -34,7 +34,7 @@
     </header>
 
 
-    <section class="search-sec main-layout">
+    <section class="search-sec ">
         <div class="search-box">
             <input class="input-bar" type="text" list="theme-search" data-trans="inputSearch"
                 placeholder="Search a category...." onkeyup="onclickFilter(this.value)">
@@ -44,7 +44,6 @@
                 <option data-trans="animal" value="animal">
                 <option data-trans="animation" value="animation">
                 <option data-trans="awkward" value="awkward">
-                <option data-trans="politic" value="politic">
             </datalist>
         </div>
         <div class="search-words">
@@ -53,18 +52,18 @@
     </section>
 
 
-    <section class="img-container main-layout">
+    <section class="img-container ">
         <!-- Here will be rendered the images  -->
     </section> -->
 
 
-    <section class="editor-container main-layout hidden">
+    <section class="editor-container hidden">
         <div class="canvas-container hidden flex">
             <canvas id="meme-canvas" height="400" width="400">
             </canvas>
         </div>
         <div class="canvas-editors hidden">
-            <div class="editors main-layout">
+            <div class="editors ">
                 <input class="userTxt" type="text" id="text" placeholder="  Challenge your inner comedian!"
                     oninput="onsendInput(this.value)">
                 <div class="btn-gr1">
@@ -158,7 +157,7 @@
         <h4 class="logo">MemeGenerator</h4>
         <p data-trans="presented-by">Presented By <a class="creator-name" onclick="onMoveToAboutPage()">Sundos Guty</a>
         </p>
-        <p data-trans="copyrights">&copy; Copyright 2021, All Right Reserved</p>
+        <p data-trans="copyrights">Copyright 2021, All Right Reserved</p>
     </footer>
 
 

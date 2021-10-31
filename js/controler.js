@@ -42,7 +42,7 @@ function onDown(ev) {
     if (!isLineClicked(pos)) return
     setLineDragg(true)
     gStartPos = pos
-    document.body.style.cursor = 'grabbing'
+    gCanvas.style.cursor = 'grabbing'
 }
 
 
@@ -50,7 +50,6 @@ function onMove(ev) {
     const line = getLine()
     if (!line.isDragged) return
     const pos = getEvPos(ev)
-    // setLineDragg(true)
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
     gStartPos = pos
@@ -60,7 +59,7 @@ function onMove(ev) {
 
 function onUp() {
     setLineDragg(false)
-    document.body.style.cursor = 'grab'
+    gCanvas.style.cursor = 'grab'
 
 }
 
@@ -158,8 +157,9 @@ function onOpenModal() {
 
 //need to fix
 function onCenterSticker(stickerId) {
-    // var stickers = getStickers()
-
+    getStickerById(stickerId)
+    console.log(stickerId)
+    renderCanvas()
     // gCtx.drawImage(elSticker, sticker.positionX, sticker.positionY)
 
 }

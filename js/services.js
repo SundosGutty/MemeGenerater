@@ -297,6 +297,8 @@ function alignText(aligPs) {
 }
 
 
+
+
 function removeLine() {
     if (gMeme.lines.length === 0) return
     const lineIdx = gMeme.selectedLineIdx
@@ -343,6 +345,15 @@ function getImgUrl() {
     const idx = getImgId()
     return gImages[idx].url
 }
+
+
+function getStickerById(id) {
+    gStickers.find(function (sticker) {
+       return sticker.id === id
+    })
+}
+
+
 
 function getRect() {
     return gRect
