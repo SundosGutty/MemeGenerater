@@ -2,6 +2,7 @@
 var gImg
 gCanvas.width = 400
 gCanvas.height = 400
+var gRect
 
 
 let gKeywords = [
@@ -69,7 +70,7 @@ let gImages = [
     {
         id: 6,
         url: 'meme-imgs (square)/6.jpg',
-        keyWords: ['funny', 'sarcasm', 'akward']
+        keyWords: ['funny', 'sarcasm', 'awkward']
     },
     {
         id: 7,
@@ -198,9 +199,10 @@ let gMeme = {
             align: 'center',
             innerColor: 'white',
             strColor: 'black',
-            positionX: 225,
+            positionX: gCanvas.width / 2,
             positionY: 30,
-            id: getRandomeId()
+            id: getRandomeId(),
+            isDragged: false
         },
         {
             txt: '',
@@ -209,9 +211,10 @@ let gMeme = {
             align: 'center',
             innerColor: 'white',
             strColor: 'black',
-            positionX: 225,
+            positionX: gCanvas.width / 2,
             positionY: 380,
-            id: getRandomeId()
+            id: getRandomeId(),
+            isDragged: false
         }
     ]
 
@@ -236,9 +239,10 @@ function addLine() {
         font: 'impact',
         innerColor: 'white',
         strColor: 'black',
-        positionX: 225,
+        positionX: gCanvas.width / 2,
         positionY: 225,
-        id: getRandomeId()
+        id: getRandomeId(),
+        isDragged: false
     }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx++
@@ -253,7 +257,7 @@ function changeOutlineColor(color) {
 
 
 function changeFillColor(color) {
-      const lineIdx = gMeme.selectedLineIdx
+    const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].innerColor = color
 
 }
@@ -312,6 +316,26 @@ function modifyKeyWordSize(id) {
 
 
 
+function isLineClicked(clickedPos) {
+    var line = gMeme.lines.find(function (line) {
+        let width = line.size * line.txt.length / 2
+        return (clickedPos.x >= line.positionX - (width / 2)
+            && clickedPos.x <= line.positionX - (width / 2) + width
+            && clickedPos.y >= line.positionY - 10 &&
+            clickedPos.y <= line.positionY + line.size + 10)
+    })
+    return line
+}
+
+
+function moveLine(dx, dy) {
+    var line = gMeme.lines.find(function (line) {
+        return line.isDragged
+    })
+    line.positionX += dx
+    line.positionY += dy
+}
+
 
 
 //helpers
@@ -320,12 +344,27 @@ function getImgUrl() {
     return gImages[idx].url
 }
 
+function getRect() {
+    return gRect
+}
+
+function isLineDragged() {
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    return currLine.isDragged
+}
+
+function setLineDragg(isDragged) {
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    currLine.isDragged = isDragged
+
+}
+
 function getLineIdx() {
     return gMeme.selectedLineIdx
 }
 
 
-function getStickers(){
+function getStickers() {
     return gStickers
 }
 
@@ -341,6 +380,12 @@ function getLineIdxById(id) {
     return gMeme.lines.findIndex(function (line) {
         return line.id === id
     })
+}
+
+function getLine() {
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    return currLine
+
 }
 
 

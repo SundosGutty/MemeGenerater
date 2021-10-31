@@ -29,6 +29,7 @@ body.rtl {
 }
 
 /* My navbar */
+
 /* full nav-bar */
 
 .logo {
@@ -71,7 +72,7 @@ a:is(:link, :active, :visited).active {
 .dropdown {
   float: right;
   overflow: hidden;
-  padding-inline-end: 30px;
+  padding-inline-end: 40px;
   cursor: pointer;
   text-align: center;
 }
@@ -86,14 +87,14 @@ a:is(:link, :active, :visited).active {
 
 .dropdown-content a {
   display: block;
-  text-align: left;
+  text-align: center;
   border-bottom: white 1px solid;
   background-color: rgba(255, 166, 0, 0.685);
   width: 100px;
   cursor: pointer;
 }
 
-.creator-name{
+.creator-name {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -136,7 +137,6 @@ a:is(:link, :active, :visited).active {
   /* padding-top: 15px; */
   margin-left: 20px;
   border-radius: 5px;
-
 }
 
 @media (max-width: 820px) {
@@ -205,11 +205,10 @@ a:is(:link, :active, :visited).active {
     padding-top: 15px;
     border-radius: 5px;
   }
-  .about-img{
+  .about-img {
     width: 300px;
     height: 300px;
   }
-
 }
 
 .img-container {
@@ -217,8 +216,6 @@ a:is(:link, :active, :visited).active {
   gap: 10px;
   grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
 }
-
-
 
 @media (min-width: 820px) {
   .editors {
@@ -230,7 +227,7 @@ a:is(:link, :active, :visited).active {
     grid-template-rows: repeat(4, 1fr) 50px 1fr;
     gap: 5px;
   }
-  .about-img{
+  .about-img {
     width: 400px;
     height: 400px;
   }
@@ -351,7 +348,7 @@ a:is(:link, :active, :visited).active {
     height: 50vh;
     flex-direction: column;
     background-color: rgb(255, 166, 0);
-     transform: translateX(100%);
+    transform: translateX(100%);
     transition: .5s ease-in-out;
     size: 10px;
   }
@@ -386,7 +383,6 @@ a:is(:link, :active, :visited).active {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
     /* padding: 5px; */
-  
   }
   .btn-gr2 {
     display: grid;
@@ -431,8 +427,7 @@ a:is(:link, :active, :visited).active {
     margin-top: 30px;
     margin-bottom: 30px;
   }
- 
-  .about-txt{
+  .about-txt {
     line-height: 2px;
   }
   .editor-container {
@@ -442,7 +437,6 @@ a:is(:link, :active, :visited).active {
     align-items: center;
     padding-right: 30px;
   }
- 
   .control-color-input {
     width: 25px;
     height: 10px;
@@ -461,10 +455,9 @@ a:is(:link, :active, :visited).active {
     padding-top: 5px;
     border-radius: 5px;
   }
-  .main-layout{
-  margin-right: 10px;
+  .main-layout {
+    margin-right: 10px;
   }
-  
 }
 
 /* Search-area */
@@ -567,7 +560,6 @@ textarea, input {
   cursor: pointer;
   grid-column: 5/6;
   grid-row: 1/2;
-
 }
 
 .editor-container button {
@@ -651,13 +643,11 @@ textarea, input {
   border: none;
 }
 
-
 .share-container a {
   text-decoration: none;
   cursor: pointer;
   color: black;
 }
-
 
 ::placeholder {
   color: black;
@@ -736,7 +726,7 @@ p a {
   height: 420px;
 }
 
-.edited-memes{
+.edited-memes {
   color: black;
   text-align: center;
 }
@@ -771,22 +761,19 @@ p a {
   flex-direction: row-reverse;
 }
 
-
-
 .modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
-  padding-top: 100px; 
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
-
 
 .modal-content {
   background-color: #fefefe;
@@ -796,8 +783,8 @@ p a {
   width: 80%;
 }
 
-
 /* The Close Button */
+
 .close {
   color: #aaaaaa;
   float: right;
@@ -805,15 +792,13 @@ p a {
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
 
-
-.modal-txt{
+.modal-txt {
   color: #000;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }

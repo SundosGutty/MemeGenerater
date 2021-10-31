@@ -12,7 +12,6 @@
 </head>
 
 <body onload="onInit()">
-
     <header class="navbar flex space-between">
         <div class="logo">
             <h1 class="heading">Memegenerator</h1>
@@ -23,10 +22,10 @@
                 <li><a onclick="onMoveToGalery()" data-trans="galery">Galery</a></li>
                 <li><a onclick="onMoveToMemePage()" data-trans="memes">Memes</a></li>
                 <li><a onclick="onMoveToAboutPage()" data-trans="about">About</a></li>
-                <li data-trans="language" class="dropdown">Language<span class="fa fa-angle-double-down"></span>
+                <li class="dropdown"><span class="fa fa-angle-double-down" data-trans="language">Language</span>
                     <ul class="dropbtn dropdown-content clean-list ">
-                        <li><a data-trans="english" onclick="onSetLang('en')">English</a></li>
-                        <li><a data-trans="hebrew" onclick="onSetLang('he')">עברית</a></li>
+                        <li><a  onclick="onSetLang('en')">English</a></li>
+                        <li><a  onclick="onSetLang('he')">עברית</a></li>
                     </ul>
                 </li>
             </ul>
@@ -38,14 +37,14 @@
     <section class="search-sec main-layout">
         <div class="search-box">
             <input class="input-bar" type="text" list="theme-search" data-trans="inputSearch"
-                placeholder="Search a category...." onkeyup="onclickFilter(value)">
+                placeholder="Search a category...." onkeyup="onclickFilter(this.value)">
             <span class="fa fa-search"></span>
             <datalist id="theme-search">
                 <option data-trans="funny" value="funny">
                 <option data-trans="animal" value="animal">
-                <option data-trans="bad" value="bad">
+                <option data-trans="animation" value="animation">
                 <option data-trans="awkward" value="awkward">
-                <option data-trans="happy" value="happy">
+                <option data-trans="politic" value="politic">
             </datalist>
         </div>
         <div class="search-words">
@@ -81,10 +80,10 @@
                     <button onclick="onAlignText('right')" class="fa fa-align-left "></button>
                     <button onclick="onAlignText('center')" class="fa fa-align-center "></button>
                     <button onclick="onAlignText('left')" class="fa  fa-align-right"></button>
-                    <select data-trans="font" id="fonts" class="fonts-selection" onchange="onChangeFont(value)">
-                        <option data-trans="font1">Impact</option>
-                        <option data-trans="font2">Times New Roman</option>
-                        <option data-trans="font3">Verdana</option>
+                    <select id="fonts" class="fonts-selection" onchange="onChangeFont(value)">
+                        <option>Impact</option>
+                        <option>Times New Roman</option>
+                        <option>Verdana</option>
                     </select>
                     <button class="fa fa-strikethrough">
                         <input class="control-color-input" type="color" oninput="onChangeOutlineColor(value)"
@@ -115,14 +114,9 @@
                 <p data-trans="about-me" class="about-txt">Hello, my name is <span class="creator-name">Sundos
                         Gutty</span>.
                     I'm a Full Stack Web Developer student, with experience in writing single-page-applications
-                    using
-                    the
-                    latest
-                    WEB
-                    technologies such as JavaScript (ES6, ES5). Hard worker, self-learner, team player with
-                    strong
-                    communication
-                    skills.
+                    using the latest WEB technologies such as JavaScript (ES6, ES5). Hard worker, self-learner, team
+                    player with
+                    strong communication skills.
                 </p>
                 <section class="by-socials">
                     <p data-trans="contact"> You can contact me through:</p>
@@ -170,7 +164,7 @@
 
 
     <div id="myModal" class="modal">
-         <div class="modal-content">
+        <div class="modal-content">
             <span class="close fa fa-close"></span>
             <p class="modal-txt">Hey there friend! I am sorry, but this feature is still in the making. But it will be
                 ready very soon, so

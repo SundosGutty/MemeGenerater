@@ -1,13 +1,86 @@
 'use strict'
 
+
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+var gStartPos
+
 function onInit() {
     gCanvas = document.querySelector('#meme-canvas')
     gCtx = gCanvas.getContext('2d')
     renderGallery()
     renderCanvas()
     renderKeyWords()
+    addListeners()
     renderStickers()
 }
+
+function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
+    window.addEventListener('resize', () => {
+        // resizeCanvas()
+        renderCanvas()
+    })
+}
+
+function addMouseListeners() {
+    gCanvas.addEventListener('mousemove', onMove)
+    gCanvas.addEventListener('mousedown', onDown)
+    gCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gCanvas.addEventListener('touchmove', onMove)
+    gCanvas.addEventListener('touchstart', onDown)
+    gCanvas.addEventListener('touchend', onUp)
+}
+
+
+function onDown(ev) {
+    ev.preventDefault()
+    const pos = getEvPos(ev)
+    if (!isLineClicked(pos)) return
+    setLineDragg(true)
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
+}
+
+
+function onMove(ev) {
+    const line = getLine()
+    if (!line.isDragged) return
+    const pos = getEvPos(ev)
+    // setLineDragg(true)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    gStartPos = pos
+    moveLine(dx, dy)
+    renderCanvas()
+}
+
+function onUp() {
+    setLineDragg(false)
+    document.body.style.cursor = 'grab'
+
+}
+
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    };
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        };
+    }
+    return pos
+}
+
 
 
 function renderGallery() {
@@ -52,7 +125,6 @@ function onMoveToMemePage() {
 }
 
 
-
 function renderStickers() {
     const stikers = getStickers()
     console.log(stikers)
@@ -86,10 +158,9 @@ function onOpenModal() {
 
 //need to fix
 function onCenterSticker(stickerId) {
-    var stickers = getStickers()
-    var sticker = stickers[stickerId - 1]
-    var elSticker = document.querySelector(`${stickerId}`)
-    gCtx.drawImage(elSticker, sticker.positionX, sticker.positionY)
+    // var stickers = getStickers()
+
+    // gCtx.drawImage(elSticker, sticker.positionX, sticker.positionY)
 
 }
 
@@ -148,7 +219,9 @@ function onFilterMemes(theme) {
     let strHtml = ``
     const imgs = getImgs()
     const keyWords = getKeyWords()
+    console.log(keyWords)
     const keyWordIdx = getKeywordId(theme)
+    console.log(keyWordIdx)
     if (keyWords[keyWordIdx].category === theme) modifyKeyWordSize(keyWordIdx)
     let newImgs = imgs.filter((img) => {
         const keyWords = img.keyWords
@@ -166,9 +239,10 @@ function renderKeyWords() {
     const keyWords = getKeyWords()
     let btnHtml = ''
     keyWords.map(function (keyWord) {
-        btnHtml += `<button data-trans=${keyWord.category} class="filter-btn" style="font-size: ${keyWord.fontSize + 10}px;" onclick="onclickFilter(this.innerHTML)">${keyWord.category}</button>`
+        btnHtml += `<button data-trans=${keyWord.category} class="filter-btn" style="font-size: ${keyWord.fontSize + 10}px;" onclick="onclickFilter('${keyWord.category}')">${keyWord.category}</button>`
     })
     document.querySelector('.search-words').innerHTML = btnHtml
+    doTrans()
 }
 
 

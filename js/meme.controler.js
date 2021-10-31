@@ -72,13 +72,21 @@ function renderText() {
 }
 
 
-function drawRect(x, y, size) {
+function drawRect(txtStartPos, txtEndPos, txtSize , txtBottom) {
+    let startX = gCanvas.width / 2 - txtStartPos - 10
+    let endX = txtEndPos + gCanvas.width / 2
+    let startY = txtSize - 30
+    let endY = txtBottom + 10
+
     gCtx.beginPath()
-    gCtx.rect(10, y - size, gCanvas.width - 20, size + 10)
+    gCtx.rect(startX, startY, endX, endY)
     gCtx.strokeStyle = 'black'
     gCtx.setLineDash([6, 2])
     gCtx.stroke()
 }
+
+
+
 
 
 function onSwitchFocus() {
@@ -86,7 +94,13 @@ function onSwitchFocus() {
     renderCanvas()
 }
 
+
 function drawText(currLine) {
+    const idx = getLineIdxById(currLine.id)
+    const txtStartPos = gCtx.measureText(currLine.txt).actualBoundingBoxLeft
+    const txtEndPos = gCtx.measureText(currLine.txt).actualBoundingBoxRight
+    const txtBottom = gCtx.measureText(currLine.txt).fontBoundingBoxAscent
+  
     gCtx.lineWidth = 2
     gCtx.font = `${currLine.size}px ${currLine.font}`
     gCtx.textAlign = currLine.align
@@ -96,15 +110,14 @@ function drawText(currLine) {
     const positionX = currLine.positionX
     const positionY = currLine.positionY
 
-    const idx = getLineIdxById(currLine.id)
     if (currLine.txt && idx === gMeme.selectedLineIdx) {
-        drawRect(positionX, positionY, currLine.size)
+        drawRect(txtStartPos, positionX, positionY, txtBottom)
     }
     gCtx.fillText(currLine.txt, positionX, positionY)
     gCtx.restore()
     gCtx.strokeText(currLine.txt, positionX, positionY)
-
 }
+
 
 function onsendInput(userTxt) {
     sendInput(userTxt)
