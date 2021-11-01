@@ -215,6 +215,7 @@ a:is(:link, :active, :visited).active {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
+  margin-inline-start: 20px;
 }
 
 @media (min-width: 820px) {
@@ -555,7 +556,7 @@ textarea, input {
 
 .file-input {
   background-color: white;
-  border: 1px solid;
+  /* border: 1px solid; */
   box-shadow: 5px 5px 16px 0px #948e8e;
   cursor: pointer;
   grid-column: 5/6;
@@ -569,6 +570,7 @@ textarea, input {
 }
 
 .canvas-container {
+  margin-right: 20px;
   border: 1px solid;
   box-shadow: 5px 5px 16px 0px #948e8e;
 }

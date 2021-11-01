@@ -91,8 +91,6 @@ function drawRect(txtStartPos, txtEndPos, txtSize , txtBottom) {
 
 
 
-
-
 function onSwitchFocus() {
     switchFocus()
     renderCanvas()
@@ -115,7 +113,7 @@ function drawText(currLine) {
     const positionY = currLine.positionY
 
     if (currLine.txt && idx === gMeme.selectedLineIdx) {
-        drawRect(txtStartPos, positionX, positionY, txtBottom)
+        drawRect(txtStartPos, txtEndPos, positionY, txtBottom)
     }
     gCtx.fillText(currLine.txt, positionX, positionY)
     gCtx.restore()
