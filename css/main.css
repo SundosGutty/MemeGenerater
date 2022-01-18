@@ -9,7 +9,6 @@ body {
   color: white;
   overflow-x: hidden;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  
 }
 
 img {
@@ -211,12 +210,12 @@ a:is(:link, :active, :visited).active {
   }
 }
 
-.img-container {
+/* .img-container {
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minMax(180px, 150px));
   margin-inline-start: 20px;
-}
+} */
 
 @media (min-width: 820px) {
   .editors {
@@ -323,10 +322,18 @@ a:is(:link, :active, :visited).active {
     padding-bottom: 50px;
   }
   .img-container {
+    padding-left: 30px;
     display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minMax(170px, 170px));
   }
+}
+
+
+.img-container img:hover {
+  opacity: 0.85;
+  border: 1px solid white;
+
 }
 
 @media (max-width: 650px) {
@@ -335,6 +342,9 @@ a:is(:link, :active, :visited).active {
     gap: 5px;
     grid-template-columns: repeat(auto-fill, minMax(150px, 150px));
   }
+    canvas{
+      height: 250px;
+    }
   .about-txt {
     line-height: 10px;
     padding-bottom: 35px;
@@ -425,7 +435,7 @@ a:is(:link, :active, :visited).active {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     margin-bottom: 30px;
   }
   .about-txt {
@@ -437,6 +447,7 @@ a:is(:link, :active, :visited).active {
     justify-content: center;
     align-items: center;
     padding-right: 30px;
+ 
   }
   .control-color-input {
     width: 25px;
@@ -536,6 +547,8 @@ textarea, input {
 
 .editor-container {
   margin-bottom: 10px;
+  margin-left: 40px;
+  /* margin-top: 40px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -727,6 +740,11 @@ p a {
 
 .save-meme-container {
   height: 420px;
+}
+
+.meme-img{
+  width: 300px;
+  height: 250px;
 }
 
 .edited-memes {
